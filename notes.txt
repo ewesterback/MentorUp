@@ -1,0 +1,20 @@
+npm init -y
+npm install sequelize pg express cors body-parser
+npm i --save-dev nodemon
+-> add scripts to package.json
+sequelize init
+->update config file
+sequelize db:create
+sequelize model:generate --name <ModelName> --attributes <someKey>:<datatype>,<anotherKey>:<anotherDatatype>
+-> update table names within model
+-> update model
+-> for new migrations other than new models 
+->sequelize migration:generate --name add-username-to-users
+sequelize db:migrate
+sequelize seed:generate --name user
+npx sequelize-cli db:seed:all
+
+
+
+psql mentor_development
+sequelize model:generate --name User --attributes firstName:string
