@@ -12,7 +12,7 @@ router.delete(
   '/:thread_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.DeleteReview
+  controller.DeleteThread
 )
 //router.get('/all', controller.FindAllReviews)
 router.get('/id/:thread_id', controller.FindThreadById)

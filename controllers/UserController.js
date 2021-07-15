@@ -64,7 +64,17 @@ const Register = async (req, res) => {
   }
 }
 
+const FindAllUsers = async (req, res) => {
+  try {
+    let users = await User.findAll({})
+    res.send(users)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   Login,
-  Register
+  Register,
+  FindAllUsers
 }

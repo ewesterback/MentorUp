@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const controller = require('../controllers/MessageController')
+const middleware = require('../middleware')
 
 router.post(
   '/create',
