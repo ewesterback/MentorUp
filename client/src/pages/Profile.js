@@ -42,10 +42,19 @@ const Profile = (props) => {
     props.loadThreadsForUser()
     props.setUser()
   }, [])
+  const mappedThreads = props.messageState.messageThreads.map((thread, i) => (
+    <div key={i}>
+      <p>User ID {props.mentorState.user.id}</p>
+      <p>Name 1: {thread.mentee.firstName}</p>
+      <p>NAme 2: {thread.mentor.firstName}</p>
+      <p>Message: {thread.message.content}</p>
+    </div>
+  ))
   console.log(props.messageState.messageThreads)
   return (
     <div className="profile-page">
       <p>profile page</p>
+      {mappedThreads}
     </div>
   )
 }

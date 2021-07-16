@@ -55,9 +55,23 @@ const FindThreadByUserId = async (req, res) => {
         {
           where: { menteeId: userId }
         }
+      ],
+      include: [
+        { model: User, as: 'mentor' },
+        { model: User, as: 'mentee' }
       ]
     })
     //for each thread, find messages, limit 1, order by creation date, include user
+    for (let i = 0; i < threads.length; i++) {
+      let threadId = threads[i].id
+      let message = await Message.findAll({
+        where: { threadId: threadId },
+        include: [{ model: User }],
+        limit: 1,
+        order: [['createdAt', 'DESC']]
+      })
+      threads[i] = { ...threads[i].dataValues, message: message[0] }
+    }
     res.send(threads)
   } catch (error) {
     throw error
