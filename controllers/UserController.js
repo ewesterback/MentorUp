@@ -73,8 +73,23 @@ const FindAllUsers = async (req, res) => {
   }
 }
 
+const FindUserFromToken = async (req, res) => {
+  try {
+    //const userId = 1
+    const userId = parseInt(res.locals.payload.id)
+    let user = await User.findAll({
+      where: { id: userId },
+      attributes: ['id', 'firstName', 'lastName']
+    })
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   Login,
   Register,
-  FindAllUsers
+  FindAllUsers,
+  FindUserFromToken
 }

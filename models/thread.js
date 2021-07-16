@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       })
       Thread.belongsTo(models.User, {
         as: 'mentee',
-        foreignKey: 'mentorId'
+        foreignKey: 'menteeId'
       })
     }
   }

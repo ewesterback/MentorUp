@@ -1,6 +1,7 @@
 const { Message } = require('../models')
 
 const CreateMessage = async (req, res) => {
+  console.log('here')
   try {
     const { threadId, content } = req.body
 
@@ -24,16 +25,12 @@ const DeleteMessage = async (req, res) => {
     throw error
   }
 }
-// const FindAllBarbers = async (req, res) => {
-//   try {
-//     let barbers = await Barber.findAll({})
-//     res.send(barbers)
-//   } catch (error) {
-//     throw error
-//   }
-// }
+
 const FindMessagesByThread = async (req, res) => {
+  console.log('yooooooooooooo')
   try {
+    console.log(req.params.thread_id)
+    console.log('thread Id')
     let threadId = parseInt(req.params.thread_id)
     const messages = await Message.findAll({ where: { threadId: threadId } })
     res.send(messages)

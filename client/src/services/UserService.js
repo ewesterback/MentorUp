@@ -1,4 +1,5 @@
-import API from './'
+import axios from 'axios'
+import { BASE_URL } from '../globals'
 
 export const UserLogin = async (loginEmail, loginPassword) => {
   let body = {
@@ -6,7 +7,7 @@ export const UserLogin = async (loginEmail, loginPassword) => {
     password: loginPassword
   }
   try {
-    const res = await API.post(`/user/login`, body)
+    const res = await axios.post(`${BASE_URL}/user/login`, body)
     return res.data //res.data returns {payload: {email, id}, token: ''}
   } catch (error) {
     throw error
@@ -15,7 +16,7 @@ export const UserLogin = async (loginEmail, loginPassword) => {
 
 export const UserRegister = async (input) => {
   try {
-    const res = await API.post(`/user/register`, input)
+    const res = await axios.post(`${BASE_URL}/user/register`, input)
     return res.data
   } catch (error) {
     throw error
@@ -24,8 +25,17 @@ export const UserRegister = async (input) => {
 export const LoadAllUsers = async () => {
   console.log('service')
   try {
-    const res = await API.get(`/user/load`)
+    const res = await axios.get(`${BASE_URL}/user/load`)
     return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const LoadUser = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/user/token`)
+    return res.data[0]
   } catch (error) {
     throw error
   }

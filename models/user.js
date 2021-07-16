@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.Thread, {
-        foreignKey: 'threadId'
+        as: 'mentor',
+        foreignKey: 'mentorId'
+      })
+      User.hasMany(models.Thread, {
+        as: 'mentee',
+        foreignKey: 'menteeId'
       })
     }
   }

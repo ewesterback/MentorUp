@@ -9,7 +9,6 @@ router.post(
   controller.CreateMessage
 )
 router.delete('/:message_id', controller.DeleteMessage)
-//router.get('/all', controller.FindAllBarbers)
-router.get('/id/:message_id', controller.FindMessagesByThread)
+router.get('/id/:thread_id', controller.FindMessagesByThread)
 
 module.exports = router

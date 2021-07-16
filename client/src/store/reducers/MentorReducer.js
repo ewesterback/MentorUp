@@ -2,7 +2,8 @@ const {
   LOAD_MENTORS,
   SELECT_MENTOR,
   CHANGE_FILTER,
-  UNSELECT_MENTOR
+  UNSELECT_MENTOR,
+  LOAD_USER
 } = require('../types')
 
 const iState = {
@@ -11,7 +12,8 @@ const iState = {
   filters: {
     field: '',
     state: ''
-  }
+  },
+  user: null
 }
 
 const MentorReducer = (state = iState, action) => {
@@ -31,6 +33,11 @@ const MentorReducer = (state = iState, action) => {
       return {
         ...state,
         selectedMentor: null
+      }
+    case LOAD_USER:
+      return {
+        ...state,
+        user: action.payload
       }
     case CHANGE_FILTER:
       //need to change

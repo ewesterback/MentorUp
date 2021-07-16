@@ -3,7 +3,7 @@ const controller = require('../controllers/ThreadController')
 const middleware = require('../middleware')
 
 router.post(
-  '/create',
+  '/:mentor_id',
   middleware.stripToken,
   middleware.verifyToken,
   controller.CreateThread
@@ -14,13 +14,18 @@ router.delete(
   middleware.verifyToken,
   controller.DeleteThread
 )
-//router.get('/all', controller.FindAllReviews)
 router.get('/id/:thread_id', controller.FindThreadById)
 router.get(
   '/user',
   middleware.stripToken,
   middleware.verifyToken,
   controller.FindThreadByUserId
+)
+router.get(
+  '/mentor/:mentor_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.FindThreadByUserIdMentorId
 )
 // router.put(
 //   '/:review_id',

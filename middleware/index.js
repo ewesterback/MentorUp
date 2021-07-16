@@ -27,6 +27,9 @@ const createToken = (payload) => {
 }
 const verifyToken = (req, res, next) => {
   const { token } = res.locals
+  console.log('verify token')
+  console.log(token)
+  console.log('-------------------')
   try {
     let payload = jwt.verify(token, APP_SECRET)
     console.log(payload)
@@ -34,21 +37,23 @@ const verifyToken = (req, res, next) => {
       res.locals.payload = payload
       return next()
     }
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized 1' })
   } catch (error) {
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized 2' })
   }
 }
 const stripToken = (req, res, next) => {
   try {
     const token = req.headers['authorization'].split(' ')[1]
+    console.log('strip token')
     console.log(token)
+    console.log('--------------')
     if (token) {
       res.locals.token = token.replace(',', '')
       return next()
     }
   } catch (error) {
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized 3' })
   }
 }
 

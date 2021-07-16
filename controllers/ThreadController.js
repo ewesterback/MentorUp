@@ -1,12 +1,15 @@
-const { Thread, User } = require('../models')
+const { Thread, User, Message } = require('../models')
 const { Op } = require('sequelize')
 
 const CreateThread = async (req, res) => {
   try {
-    const { mentorID } = req.body
-
+    let mentorID = parseInt(req.params.mentor_id)
+    console.log('--------------------')
+    console.log(mentorID)
+    console.log(res.locals.payload.id)
+    console.log('----------------------')
     let threadBody = {
-      mentorID,
+      mentorId: mentorID,
       menteeId: res.locals.payload.id
     }
     const thread = await Thread.create(threadBody)
@@ -31,17 +34,7 @@ const DeleteThread = async (req, res) => {
     throw error
   }
 }
-// const FindAllReviews = async (req, res) => {
-//   try {
-//     let reviews = await Review.findAll({
-//       include: [{ model: User, attributes: ['firstName', 'lastName'] }],
-//       order: [['createdAt', 'DESC']]
-//     })
-//     res.send(reviews)
-//   } catch (error) {
-//     throw error
-//   }
-// }
+
 const FindThreadById = async (req, res) => {
   try {
     let threadId = parseInt(req.params.thread_id)
@@ -54,7 +47,7 @@ const FindThreadById = async (req, res) => {
 const FindThreadByUserId = async (req, res) => {
   try {
     let userId = parseInt(res.locals.payload.id)
-    const reviews = await Review.findAll({
+    const threads = await Thread.findAll({
       [Op.or]: [
         {
           where: { mentorID: userId }
@@ -64,31 +57,55 @@ const FindThreadByUserId = async (req, res) => {
         }
       ]
     })
-    res.send(reviews)
+    res.send(threads)
+  } catch (error) {
+    throw error
+  }
+}
+const FindThreadByUserIdMentorId = async (req, res) => {
+  try {
+    console.log('made it to thread controller')
+    let userId = parseInt(res.locals.payload.id)
+    let mentorId = parseInt(req.params.mentor_id)
+    const threads = await Thread.findAll({
+      where: {
+        [Op.and]: [
+          { [Op.or]: [{ mentorId: userId }, { menteeId: userId }] },
+          { [Op.or]: [{ mentorId: mentorId }, { menteeId: mentorId }] }
+        ]
+      }
+    })
+    res.send(threads)
   } catch (error) {
     throw error
   }
 }
 
-// const UpdateReview = async (req, res) => {
-//   try {
-//     let reviewId = parseInt(req.params.review_id)
-//     req.body.userId = parseInt(res.locals.payload.id)
-//     let review = await Review.update(req.body, {
-//       where: { id: reviewId },
-//       returning: true
-//     })
-//     res.send(review)
-//   } catch (error) {
-//     throw error
-//   }
-// }
+// const reviews = await Review.findAll({
+//   [Op.and]: [
+//     {[Op.or]: [
+//       {
+//         where: { mentorID: userId }
+//       },
+//       {
+//         where: { menteeId: userId }
+//       }
+//     ]},
+//     {[Op.or]: [
+//       {
+//         where: { mentorID: mentorID }
+//       },
+//       {
+//         where: { menteeId: mentorID }
+//       }
+//     ]}
+//   ]
+// })
 
 module.exports = {
   CreateThread,
   DeleteThread,
-  //FindAllThreads,
   FindThreadById,
-  FindThreadByUserId
-  //UpdateReview
+  FindThreadByUserId,
+  FindThreadByUserIdMentorId
 }

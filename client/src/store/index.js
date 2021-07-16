@@ -5,11 +5,13 @@ import thunk from 'redux-thunk'
 //import ItemReducer from './reducers/ItemReducer'
 import LoginReducer from './reducers/LoginReducer'
 import MentorReducer from './reducers/MentorReducer'
+import MessageReducer from './reducers/MessageReducer'
 
 const store = createStore(
   combineReducers({
     loginState: LoginReducer,
-    mentorState: MentorReducer
+    mentorState: MentorReducer,
+    messageState: MessageReducer
     //userState: UserReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))

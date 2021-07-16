@@ -1,5 +1,10 @@
-import { LoadAllUsers } from '../../services/UserService'
-import { LOAD_MENTORS, SELECT_MENTOR, UNSELECT_MENTOR } from '../types'
+import { LoadAllUsers, LoadUser } from '../../services/UserService'
+import {
+  LOAD_MENTORS,
+  SELECT_MENTOR,
+  UNSELECT_MENTOR,
+  LOAD_USER
+} from '../types'
 
 export const LoadMentors = () => {
   return async (dispatch) => {
@@ -8,6 +13,16 @@ export const LoadMentors = () => {
       dispatch({ type: LOAD_MENTORS, payload: mentors })
     } catch (error) {
       return alert('No mentors right now')
+    }
+  }
+}
+export const LoadUserFromToken = () => {
+  return async (dispatch) => {
+    try {
+      const mentor = await LoadUser()
+      dispatch({ type: LOAD_USER, payload: mentor })
+    } catch (error) {
+      return alert('Something went wrong')
     }
   }
 }
