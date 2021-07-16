@@ -13,6 +13,16 @@ export const LoadMessagesForMentor = async (id) => {
     return null
   }
 }
+export const LoadThreadsForUser = async () => {
+  console.log('load messages for user')
+  try {
+    const res = await axios.get(`${BASE_URL}/thread/user`)
+    console.log(res.data)
+    return res.data
+  } catch (error) {
+    return null
+  }
+}
 // ------------------------------
 // Message APIs
 // _______________________________

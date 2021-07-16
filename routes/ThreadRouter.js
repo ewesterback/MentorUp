@@ -8,12 +8,14 @@ router.post(
   middleware.verifyToken,
   controller.CreateThread
 )
-router.delete(
-  '/:thread_id',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.DeleteThread
-)
+// ADD COMMENTED LINE BACK IN
+// router.delete(
+//   '/:thread_id',
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.DeleteThread
+// )
+router.delete('/:thread_id', controller.DeleteThread)
 router.get('/id/:thread_id', controller.FindThreadById)
 router.get(
   '/user',

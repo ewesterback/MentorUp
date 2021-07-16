@@ -7,7 +7,8 @@ import {
   LoadMessagesForMentor,
   LoadMessagesForThread,
   CreateNewThreadAndMessage,
-  CreateNewMessage
+  CreateNewMessage,
+  LoadThreadsForUser
 } from '../../services/MessageService'
 import {
   LOAD_MESSAGE_FOR_MENTOR,
@@ -15,9 +16,11 @@ import {
   CREATE_NEW_MESSAGE_AND_THREAD,
   CREATE_NEW_MESSAGE_ON_THREAD,
   UNSELECT_THREAD,
-  STAGE_MESSAGE
+  STAGE_MESSAGE,
+  LOAD_THREADS_FOR_USER
 } from '../types'
 
+//returns thread between user and mentor, specially handling added for if there is not a thread
 export const FindThreadByMentor = (id) => {
   return async (dispatch) => {
     try {
@@ -40,6 +43,21 @@ export const FindThreadByMentor = (id) => {
       }
     } catch (error) {
       return alert('No messages right now')
+    }
+  }
+}
+// finds all threads for the logged in user
+export const FindThreadsByUser = () => {
+  return async (dispatch) => {
+    try {
+      const threads = await LoadThreadsForUser()
+      console.log(threads)
+      dispatch({
+        type: LOAD_THREADS_FOR_USER,
+        payload: threads
+      })
+    } catch (error) {
+      return error
     }
   }
 }

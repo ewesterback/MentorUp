@@ -57,6 +57,7 @@ const FindThreadByUserId = async (req, res) => {
         }
       ]
     })
+    //for each thread, find messages, limit 1, order by creation date, include user
     res.send(threads)
   } catch (error) {
     throw error
@@ -75,6 +76,7 @@ const FindThreadByUserIdMentorId = async (req, res) => {
         ]
       }
     })
+    //could load in all messages here since only one thread
     res.send(threads)
   } catch (error) {
     throw error

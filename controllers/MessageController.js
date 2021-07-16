@@ -1,4 +1,4 @@
-const { Message } = require('../models')
+const { Message, User } = require('../models')
 
 const CreateMessage = async (req, res) => {
   console.log('here')
@@ -32,7 +32,10 @@ const FindMessagesByThread = async (req, res) => {
     console.log(req.params.thread_id)
     console.log('thread Id')
     let threadId = parseInt(req.params.thread_id)
-    const messages = await Message.findAll({ where: { threadId: threadId } })
+    const messages = await Message.findAll({
+      where: { threadId: threadId },
+      include: [{ model: User }]
+    })
     res.send(messages)
   } catch (error) {
     throw error
