@@ -12,7 +12,8 @@ import {
   StageMessage,
   CreateNewThreadWithNewMessage,
   CreateNewMessageGivenThread,
-  FindThreadsByUser
+  FindThreadsByUser,
+  SelectThread
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
 
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     unselectMentor: () => dispatch(UnselectMentor()),
     findThreads: (id) => dispatch(FindThreadByMentor(id)),
     loadMessages: (threadId) => dispatch(FindMessagesByThread(threadId)),
+    selectThread: (threadId) => dispatch(SelectThread(threadId)),
     unselectThread: () => dispatch(UnselectThread()),
     handleMessage: (content) => dispatch(StageMessage(content)),
     createNewThreadWithNewMessage: (mentorId, content) =>
@@ -42,19 +44,58 @@ const Profile = (props) => {
     props.loadThreadsForUser()
     props.setUser()
   }, [])
+  const onThreadClick = (threadId) => {
+    props.selectThread(threadId)
+    props.loadMessages(threadId)
+  }
+
+  const handleInput = (e) => {
+    props.handleMessage(e.target.value)
+  }
+  console.log(props.messageState)
+  //handle send message
+  const onSend = (e) => {
+    e.preventDefault()
+    console.log(props.messageState)
+    props.createNewMessageGivenThread(
+      props.messageState.selectedThread,
+      props.messageState.messageContent
+    )
+    props.handleMessage('')
+  }
   const mappedThreads = props.messageState.messageThreads.map((thread, i) => (
-    <div key={i}>
+    <div key={i} onClick={() => onThreadClick(thread.id)}>
       <p>User ID {props.mentorState.user.id}</p>
       <p>Name 1: {thread.mentee.firstName}</p>
       <p>NAme 2: {thread.mentor.firstName}</p>
       <p>Message: {thread.message.content}</p>
     </div>
   ))
+  console.log(props.messageState.messages)
   console.log(props.messageState.messageThreads)
+  const mappedMessages = props.messageState.messages.map((message, i) => (
+    <div key={i}>
+      <p>{message.content}</p>
+    </div>
+  ))
   return (
     <div className="profile-page">
       <p>profile page</p>
-      {mappedThreads}
+      <div>{mappedThreads}</div>
+      <p>******** Messages **************</p>
+      <div>{mappedMessages}</div>
+      <Input
+        placeholder="message"
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        value={props.messageState.messageContent}
+        onChange={handleInput}
+      />
+      <Button
+        label="Send Message"
+        variant="success"
+        className="rainbow-m-around_medium"
+        onClick={onSend}
+      />
     </div>
   )
 }

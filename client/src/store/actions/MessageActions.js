@@ -17,7 +17,8 @@ import {
   CREATE_NEW_MESSAGE_ON_THREAD,
   UNSELECT_THREAD,
   STAGE_MESSAGE,
-  LOAD_THREADS_FOR_USER
+  LOAD_THREADS_FOR_USER,
+  SELECT_THREAD
 } from '../types'
 
 //returns thread between user and mentor, specially handling added for if there is not a thread
@@ -92,6 +93,10 @@ export const CreateNewMessageGivenThread = (threadId, content) => {
     }
   }
 }
+export const SelectThread = (threadId) => ({
+  type: SELECT_THREAD,
+  payload: threadId
+})
 
 export const UnselectThread = () => ({
   type: UNSELECT_THREAD

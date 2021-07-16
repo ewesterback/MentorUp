@@ -33,14 +33,18 @@ const mapDispatchToProps = (dispatch) => {
 
 const MentorDetail = (props) => {
   console.log('hi!')
+  //finds message thread between user and mentor if there is one
   useEffect(() => {
     props.findThreads(props.mentorState.selectedMentor.id)
   }, [])
+  //handles message input
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
   }
   console.log(props.messageState)
-  const onSend = () => {
+  //handle send message
+  const onSend = (e) => {
+    e.preventDefault()
     console.log(props.messageState)
     if (!props.messageState.selectedThread) {
       props.createNewThreadWithNewMessage(
@@ -55,11 +59,14 @@ const MentorDetail = (props) => {
     }
     props.handleMessage('')
   }
-  const onClick = () => {
+  //handle back to mentor search
+  const onClick = (e) => {
+    e.preventDefault()
     props.unselectMentor()
     props.unselectThread()
     props.history.push(`/mentors`)
   }
+  //maps all of the messages between user and mentor
   const mappedMessages = props.messageState.messages.map((message, i) => (
     <p key={i}>{message.content}</p>
   ))

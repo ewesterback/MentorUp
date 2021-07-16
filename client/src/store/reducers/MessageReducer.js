@@ -5,7 +5,8 @@ const {
   CREATE_NEW_MESSAGE_ON_THREAD,
   UNSELECT_THREAD,
   STAGE_MESSAGE,
-  LOAD_THREADS_FOR_USER
+  LOAD_THREADS_FOR_USER,
+  SELECT_THREAD
 } = require('../types')
 
 const iState = {
@@ -44,6 +45,11 @@ const MessageReducer = (state = iState, action) => {
       return {
         ...state,
         messages: [...state.messages, action.payload]
+      }
+    case SELECT_THREAD:
+      return {
+        ...state,
+        selectedThread: action.payload
       }
     case UNSELECT_THREAD:
       console.log('made it to unselect')
