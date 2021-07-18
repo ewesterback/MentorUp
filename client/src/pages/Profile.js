@@ -16,6 +16,7 @@ import {
   SelectThread
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
+import MessageCard from '../components/MessageCard'
 
 const mapStateToProps = ({ mentorState, messageState }) => {
   return { mentorState, messageState }
@@ -75,7 +76,7 @@ const Profile = (props) => {
   console.log(props.messageState.messageThreads)
   const mappedMessages = props.messageState.messages.map((message, i) => (
     <div key={i}>
-      <p>{message.content}</p>
+      <MessageCard message={message} />
     </div>
   ))
   return (

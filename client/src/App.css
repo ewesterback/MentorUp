@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.sender-message {
+  background-color: aqua;
+}
+.recipient-message {
+  background-color: yellow;
+}
