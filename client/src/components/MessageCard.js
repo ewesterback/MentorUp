@@ -10,9 +10,10 @@ import {
   // UnselectThread,
   StageMessage,
   // CreateNewThreadWithNewMessage,
-  CreateNewMessageGivenThread
+  CreateNewMessageGivenThread,
   // FindThreadsByUser,
   // SelectThread
+  DeleteMessageGivenId
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
 import moment from 'moment'
@@ -32,24 +33,15 @@ const mapDispatchToProps = (dispatch) => {
     // createNewThreadWithNewMessage: (mentorId, content) =>
     //   dispatch(CreateNewThreadWithNewMessage(mentorId, content)),
     createNewMessageGivenThread: (threadId, content) =>
-      dispatch(CreateNewMessageGivenThread(threadId, content))
+      dispatch(CreateNewMessageGivenThread(threadId, content)),
     // loadThreadsForUser: () => dispatch(FindThreadsByUser()),
     // setUser: () => dispatch(LoadUserFromToken())
+    deleteMessage: (messageId) => dispatch(DeleteMessageGivenId(messageId))
   }
 }
 
 const MessageCard = (props) => {
   console.log(props.message)
-  //functions
-  // useEffect(() => {
-  //   props.loadThreadsForUser()
-  //   props.setUser()
-  // }, [])
-  // const onThreadClick = (threadId) => {
-  //   props.selectThread(threadId)
-  //   props.loadMessages(threadId)
-  // }
-
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
   }
@@ -64,21 +56,10 @@ const MessageCard = (props) => {
     )
     props.handleMessage('')
   }
-  // const mappedThreads = props.messageState.messageThreads.map((thread, i) => (
-  //   <div key={i} onClick={() => onThreadClick(thread.id)}>
-  //     <p>User ID {props.mentorState.user.id}</p>
-  //     <p>Name 1: {thread.mentee.firstName}</p>
-  //     <p>NAme 2: {thread.mentor.firstName}</p>
-  //     <p>Message: {thread.message.content}</p>
-  //   </div>
-  // ))
-  // console.log(props.messageState.messages)
-  // console.log(props.messageState.messageThreads)
-  // const mappedMessages = props.messageState.messages.map((message, i) => (
-  //   <div key={i}>
-  //     <p>{message.content}</p>
-  //   </div>
-  // ))
+  const onDelete = (id) => {
+    console.log(id)
+    props.deleteMessage(id)
+  }
   return (
     <div className="message-card">
       {/* <p>profile page</p>
@@ -99,6 +80,12 @@ const MessageCard = (props) => {
           'dddd, MMMM Do YYYY, h:mm:ss a'
         )}
       </p>
+      <Button
+        label="Delete"
+        onClick={() => {
+          onDelete(props.message.id)
+        }}
+      />
 
       {/* <Input
         placeholder="message"

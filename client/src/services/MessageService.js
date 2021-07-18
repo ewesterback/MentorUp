@@ -70,3 +70,13 @@ export const CreateNewMessage = async (threadId, content) => {
     return null
   }
 }
+export const DeleteMessage = async (messageId) => {
+  console.log('delete message')
+  try {
+    const res = await axios.delete(`${BASE_URL}/message/${messageId}`)
+    console.log(res)
+    return res
+  } catch (error) {
+    return null
+  }
+}

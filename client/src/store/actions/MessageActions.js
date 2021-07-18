@@ -8,7 +8,8 @@ import {
   LoadMessagesForThread,
   CreateNewThreadAndMessage,
   CreateNewMessage,
-  LoadThreadsForUser
+  LoadThreadsForUser,
+  DeleteMessage
 } from '../../services/MessageService'
 import {
   LOAD_MESSAGE_FOR_MENTOR,
@@ -18,7 +19,8 @@ import {
   UNSELECT_THREAD,
   STAGE_MESSAGE,
   LOAD_THREADS_FOR_USER,
-  SELECT_THREAD
+  SELECT_THREAD,
+  DELETE_MESSAGE
 } from '../types'
 
 //returns thread between user and mentor, specially handling added for if there is not a thread
@@ -92,6 +94,17 @@ export const CreateNewMessageGivenThread = (threadId, content) => {
       dispatch({ type: CREATE_NEW_MESSAGE_ON_THREAD, payload: message })
     } catch (error) {
       return alert('error 3')
+    }
+  }
+}
+export const DeleteMessageGivenId = (messageId) => {
+  return async (dispatch) => {
+    try {
+      const res = await DeleteMessage(messageId)
+      console.log(res)
+      dispatch({ type: DELETE_MESSAGE, payload: res })
+    } catch (error) {
+      return alert('Uh oh')
     }
   }
 }
