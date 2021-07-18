@@ -15,6 +15,7 @@ import {
   // SelectThread
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
+import moment from 'moment'
 
 const mapStateToProps = ({ mentorState, messageState }) => {
   return { mentorState, messageState }
@@ -38,6 +39,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const MessageCard = (props) => {
+  console.log(props.message)
   //functions
   // useEffect(() => {
   //   props.loadThreadsForUser()
@@ -91,6 +93,11 @@ const MessageCard = (props) => {
         }
       >
         {props.message.content}
+      </p>
+      <p>
+        {moment(props.message.updatedAt).format(
+          'dddd, MMMM Do YYYY, h:mm:ss a'
+        )}
       </p>
 
       {/* <Input

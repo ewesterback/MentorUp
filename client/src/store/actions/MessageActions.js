@@ -52,6 +52,7 @@ export const FindThreadsByUser = () => {
   return async (dispatch) => {
     try {
       const threads = await LoadThreadsForUser()
+      console.log('threads for users')
       console.log(threads)
       dispatch({
         type: LOAD_THREADS_FOR_USER,
@@ -87,6 +88,7 @@ export const CreateNewMessageGivenThread = (threadId, content) => {
   return async (dispatch) => {
     try {
       const message = await CreateNewMessage(threadId, content)
+      console.log(message)
       dispatch({ type: CREATE_NEW_MESSAGE_ON_THREAD, payload: message })
     } catch (error) {
       return alert('error 3')

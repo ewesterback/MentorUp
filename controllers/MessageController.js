@@ -11,7 +11,13 @@ const CreateMessage = async (req, res) => {
       userId: res.locals.payload.id
     }
     const message = await Message.create(messageBody)
-    res.send(message)
+    userId = message.userId
+    let user = await User.findAll({
+      where: { id: userId },
+      attributes: ['id', 'firstName', 'lastName']
+    })
+    newMessage = { ...message.dataValues, User: user[0] }
+    res.send(newMessage)
   } catch (error) {
     throw error
   }
