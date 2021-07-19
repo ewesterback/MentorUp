@@ -31,12 +31,15 @@ const Register = async (req, res) => {
       lastName,
       email,
       password,
-      isMentor,
       availableToMentor,
-      field,
       state,
       linkedin,
-      photo
+      photo,
+      bio,
+      passions,
+      currentTitle,
+      currentCompany,
+      yearsInIndustry
     } = req.body
     let passwordDigest = await middleware.hashPassword(password)
     let userBody = {
@@ -44,12 +47,15 @@ const Register = async (req, res) => {
       lastName,
       email,
       passwordDigest,
-      isMentor,
       availableToMentor,
-      field,
       state,
       linkedin,
-      photo
+      photo,
+      bio,
+      passions,
+      currentTitle,
+      currentCompany,
+      yearsInIndustry
     }
     const user = await User.create(userBody)
     res.send(user)

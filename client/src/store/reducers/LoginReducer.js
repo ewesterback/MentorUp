@@ -16,12 +16,15 @@ const iState = {
     firstName: '',
     lastName: '',
     password: '',
-    isMentor: 0,
     availableToMentor: 0,
-    field: '',
     state: '',
     linkedin: '',
-    photo: ''
+    photo: '',
+    bio,
+    passions,
+    currentTitle,
+    currentCompany,
+    yearsInIndustry
   },
   registrationError: '',
   loginError: ''
