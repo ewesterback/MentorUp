@@ -26,6 +26,7 @@ const Mentors = (props) => {
   const mappedMentors = props.mentorState.mentors.map((mentor, i) => (
     <MentorCard mentor={mentor} key={i} {...props} />
   ))
+  console.log(props.mentorState)
   return (
     <div className="mentor-page">
       <p>mentors</p>

@@ -4,11 +4,12 @@ const {
   USER_REGISTER,
   STAGE_LOGIN,
   SET_LOGIN_ERROR,
-  SET_REG_ERROR
+  SET_REG_ERROR,
+  LOAD_USER
 } = require('../types')
 
 const iState = {
-  //user: null,
+  user: null,
   authenticated: false,
   formInput: {
     email: '',
@@ -36,6 +37,7 @@ const LoginReducer = (state = iState, action) => {
       }
     case USER_LOGIN:
       localStorage.setItem('token', action.payload.token)
+      console.log(action.payload)
       return {
         ...state,
         //user: action.payload,
@@ -50,6 +52,11 @@ const LoginReducer = (state = iState, action) => {
       }
     case SET_AUTH:
       return { ...state, authenticated: action.payload }
+    case LOAD_USER:
+      return {
+        ...state,
+        user: action.payload
+      }
     case SET_LOGIN_ERROR:
       return { ...state, loginError: action.payload }
     case SET_REG_ERROR:

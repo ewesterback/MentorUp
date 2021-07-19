@@ -5,7 +5,7 @@ import { LoadMentors, SelectMentor } from '../store/actions/MentorActions'
 import { SetAuth } from '../store/actions/LoginActions'
 import { Input, Button } from 'react-rainbow-components'
 
-const mapStateToProps = ({ mentorState, loginState }) => {
+const mapStateToProps = ({ loginState }) => {
   return { loginState }
 }
 
@@ -17,21 +17,20 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Nav = (props) => {
-  const getToken = () => {
-    let token = localStorage.getItem('token')
-    if (token) {
-      return props.setAuth(true)
-    }
-  }
-  //set authenication again if user refreshed page
-  useEffect(() => {
-    getToken()
-  }, [])
+  // const getToken = () => {
+  //   let token = localStorage.getItem('token')
+  //   if (token) {
+  //     return props.setAuth(true)
+  //   }
+  // }
+  // //set authenication again if user refreshed page
+  // useEffect(() => {
+  //   getToken()
+  // }, [])
 
   const onLogout = () => {
     localStorage.clear()
     props.setAuth(false)
-    props.history.push(`/`)
   }
 
   return (

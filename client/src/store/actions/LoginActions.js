@@ -1,11 +1,16 @@
-import { UserLogin, UserRegister } from '../../services/UserService'
+import {
+  UserLogin,
+  UserRegister,
+  LoadUserUsingToken
+} from '../../services/UserService'
 import {
   USER_LOGIN,
   SET_AUTH,
   USER_REGISTER,
   STAGE_LOGIN,
   SET_LOGIN_ERROR,
-  SET_REG_ERROR
+  SET_REG_ERROR,
+  LOAD_USER
 } from '../types'
 
 export const LoadUser = (email, password) => {
@@ -21,7 +26,16 @@ export const LoadUser = (email, password) => {
     }
   }
 }
-
+export const LoadUserFromToken = () => {
+  return async (dispatch) => {
+    try {
+      const mentor = await LoadUserUsingToken()
+      dispatch({ type: LOAD_USER, payload: mentor })
+    } catch (error) {
+      return alert('Something went wrong')
+    }
+  }
+}
 export const SetAuth = (bool) => ({
   type: SET_AUTH,
   payload: bool

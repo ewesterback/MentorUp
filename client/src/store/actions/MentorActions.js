@@ -1,4 +1,4 @@
-import { LoadAllUsers, LoadUser } from '../../services/UserService'
+import { LoadAllUsers, LoadUserUsingToken } from '../../services/UserService'
 import {
   LOAD_MENTORS,
   SELECT_MENTOR,
@@ -19,7 +19,7 @@ export const LoadMentors = () => {
 export const LoadUserFromToken = () => {
   return async (dispatch) => {
     try {
-      const mentor = await LoadUser()
+      const mentor = await LoadUserUsingToken()
       dispatch({ type: LOAD_USER, payload: mentor })
     } catch (error) {
       return alert('Something went wrong')

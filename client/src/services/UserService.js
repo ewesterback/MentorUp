@@ -32,7 +32,7 @@ export const LoadAllUsers = async () => {
   }
 }
 
-export const LoadUser = async () => {
+export const LoadUserUsingToken = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/user/token`)
     return res.data[0]

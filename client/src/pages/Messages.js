@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const Profile = (props) => {
+const Messages = (props) => {
   //functions
   useEffect(() => {
     props.loadThreadsForUser()
@@ -100,4 +100,4 @@ const Profile = (props) => {
     </div>
   )
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Messages)
