@@ -24,6 +24,9 @@ const Nav = (props) => {
           <NavLink className="nav-link" to="/mentors">
             Look for a Mentor
           </NavLink>
+          <NavLink className="nav-link" to="/messages">
+            Messages
+          </NavLink>
         </div>
       ) : (
         <p>hi</p>
