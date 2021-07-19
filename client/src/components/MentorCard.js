@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const MentorCard = (props) => {
   const onClick = (mentor) => {
-    console.log(props)
     props.setSelectedMentor(mentor)
     props.history.push(`/mentors/${mentor.id}`)
   }

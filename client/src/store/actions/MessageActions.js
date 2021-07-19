@@ -9,7 +9,8 @@ import {
   CreateNewThreadAndMessage,
   CreateNewMessage,
   LoadThreadsForUser,
-  DeleteMessage
+  DeleteMessage,
+  EditMessage
 } from '../../services/MessageService'
 import {
   LOAD_MESSAGE_FOR_MENTOR,
@@ -20,7 +21,10 @@ import {
   STAGE_MESSAGE,
   LOAD_THREADS_FOR_USER,
   SELECT_THREAD,
-  DELETE_MESSAGE
+  DELETE_MESSAGE,
+  TOGGLE_EDIT_MESSAGE,
+  EDIT_MESSAGE,
+  STAGE_EDIT_MESSAGE
 } from '../types'
 
 //returns thread between user and mentor, specially handling added for if there is not a thread
@@ -101,8 +105,8 @@ export const DeleteMessageGivenId = (messageId) => {
   return async (dispatch) => {
     try {
       const res = await DeleteMessage(messageId)
-      console.log(res)
-      dispatch({ type: DELETE_MESSAGE, payload: res })
+      //console.log(res)
+      dispatch({ type: DELETE_MESSAGE, payload: messageId })
     } catch (error) {
       return alert('Uh oh')
     }
@@ -121,3 +125,26 @@ export const StageMessage = (content) => ({
   type: STAGE_MESSAGE,
   payload: content
 })
+
+export const StageEditMessage = (content) => ({
+  type: STAGE_EDIT_MESSAGE,
+  payload: content
+})
+
+export const ToggleEditMessage = (id) => ({
+  type: TOGGLE_EDIT_MESSAGE,
+  payload: id
+})
+
+export const EditGivenMessage = (body) => {
+  return async (dispatch) => {
+    try {
+      const res = await EditMessage(body)
+      //console.log(res)
+      let message = res.data[1][0]
+      dispatch({ type: EDIT_MESSAGE, payload: message })
+    } catch (error) {
+      return alert('Uh oh')
+    }
+  }
+}

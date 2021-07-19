@@ -6,14 +6,15 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Mentor from './pages/Mentors'
 import MentorDetail from './pages/MentorDetail'
-import Profile from './pages/Profile'
+import Messages from './pages/Messages'
+import Nav from './components/Nav'
 
 function App() {
   return (
     <div className="App">
       <h1>Header</h1>
       <h2>Subheader</h2>
-
+      <Nav />
       <p>---------------Before Routes----------------------</p>
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route exact path="/mentors" render={(props) => <Mentor {...props} />} />
@@ -22,7 +23,7 @@ function App() {
         path="/mentors/:id"
         render={(props) => <MentorDetail {...props} />}
       />
-      <Route path="/profile" render={(props) => <Profile {...props} />} />
+      <Route path="/messages" render={(props) => <Messages {...props} />} />
     </div>
   )
 }

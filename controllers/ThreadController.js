@@ -47,9 +47,6 @@ const FindThreadById = async (req, res) => {
 const FindThreadByUserId = async (req, res) => {
   try {
     let userId = parseInt(res.locals.payload.id)
-    console.log('________________________')
-    console.log(userId)
-    console.log('****************************************')
     const threads = await Thread.findAll({
       where: {
         [Op.or]: [{ mentorId: userId }, { menteeId: userId }]
@@ -62,9 +59,6 @@ const FindThreadByUserId = async (req, res) => {
     //for each thread, find messages, limit 1, order by creation date, include user
     for (let i = 0; i < threads.length; i++) {
       let threadId = threads[i].id
-      console.log('****************-8-8-8-8-8-8')
-      console.log(threadId)
-      console.log('****************-8-8-8-8-8-8')
       let message = await Message.findAll({
         where: { threadId: threadId },
         include: [{ model: User }],
@@ -97,27 +91,6 @@ const FindThreadByUserIdMentorId = async (req, res) => {
     throw error
   }
 }
-
-// const reviews = await Review.findAll({
-//   [Op.and]: [
-//     {[Op.or]: [
-//       {
-//         where: { mentorID: userId }
-//       },
-//       {
-//         where: { menteeId: userId }
-//       }
-//     ]},
-//     {[Op.or]: [
-//       {
-//         where: { mentorID: mentorID }
-//       },
-//       {
-//         where: { menteeId: mentorID }
-//       }
-//     ]}
-//   ]
-// })
 
 module.exports = {
   CreateThread,

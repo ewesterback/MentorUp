@@ -33,8 +33,6 @@ const Login = (props) => {
       props.loginState.formInput.password
     )
 
-    console.log('made it to catch in login')
-
     //make sure to only push if okay!!!!
     //props.history.push(`/`)
     //---------------------------
@@ -42,7 +40,6 @@ const Login = (props) => {
 
   const getToken = () => {
     let token = localStorage.getItem('token')
-    console.log(token)
     if (token) {
       return props.setAuth(true)
     }

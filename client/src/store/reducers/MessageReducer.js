@@ -7,14 +7,19 @@ const {
   STAGE_MESSAGE,
   LOAD_THREADS_FOR_USER,
   SELECT_THREAD,
-  DELETE_MESSAGE
+  DELETE_MESSAGE,
+  TOGGLE_EDIT_MESSAGE,
+  EDIT_MESSAGE,
+  STAGE_EDIT_MESSAGE
 } = require('../types')
 
 const iState = {
   messageThreads: [],
   selectedThread: null,
   messages: [],
-  messageContent: ''
+  messageContent: '',
+  editMessage: null,
+  editMessageContent: ''
 }
 
 const MessageReducer = (state = iState, action) => {
@@ -64,9 +69,39 @@ const MessageReducer = (state = iState, action) => {
         ...state,
         messageContent: action.payload
       }
-    case DELETE_MESSAGE:
+    case STAGE_EDIT_MESSAGE:
       return {
-        ...state
+        ...state,
+        editMessageContent: action.payload
+      }
+    case DELETE_MESSAGE:
+      console.log(action.payload)
+      return {
+        ...state,
+        messages: state.messages.filter(
+          (message) => message.id !== action.payload
+        )
+      }
+    case EDIT_MESSAGE:
+      console.log(action.payload)
+      // state.messages.forEach((message)=>{
+      //   if (message.id == action.payload.id) {
+      //     message.content = action.payload.content
+      //   }
+      // })
+      return {
+        ...state,
+        messageContent: '',
+        message: state.messages.forEach((message) => {
+          if (message.id == action.payload.id) {
+            message.content = action.payload.content
+          }
+        })
+      }
+    case TOGGLE_EDIT_MESSAGE:
+      return {
+        ...state,
+        editMessage: action.payload
       }
     default:
       return { ...state }

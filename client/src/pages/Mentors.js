@@ -19,18 +19,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Mentors = (props) => {
-  // const getToken = () => {
-  //   let token = localStorage.getItem('token')
-  //   console.log(token)
-  //   if (token) {
-  //     return props.setAuth(true)
-  //   }
-  // }
   useEffect(() => {
     props.loadMentors()
     props.setUser()
   }, [])
-  console.log(props.mentorState)
   const mappedMentors = props.mentorState.mentors.map((mentor, i) => (
     <MentorCard mentor={mentor} key={i} {...props} />
   ))

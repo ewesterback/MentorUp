@@ -80,3 +80,17 @@ export const DeleteMessage = async (messageId) => {
     return null
   }
 }
+
+export const EditMessage = async (body) => {
+  console.log('edit message')
+  console.log(body)
+  let message = { content: body.content }
+  console.log(message)
+  try {
+    const res = await axios.put(`${BASE_URL}/message/${body.id}`, message)
+    console.log(res)
+    return res
+  } catch (error) {
+    return null
+  }
+}

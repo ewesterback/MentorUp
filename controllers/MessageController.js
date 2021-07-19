@@ -31,12 +31,23 @@ const DeleteMessage = async (req, res) => {
     throw error
   }
 }
+const EditMessage = async (req, res) => {
+  try {
+    let messageId = parseInt(req.params.message_id)
+    let body = req.body
+    let user = body.User
+    let message = await Message.update(body, {
+      where: { id: messageId },
+      returning: true
+    })
+    res.send(message)
+  } catch (error) {
+    throw error
+  }
+}
 
 const FindMessagesByThread = async (req, res) => {
-  console.log('yooooooooooooo')
   try {
-    console.log(req.params.thread_id)
-    console.log('thread Id')
     let threadId = parseInt(req.params.thread_id)
     const messages = await Message.findAll({
       where: { threadId: threadId },
@@ -51,5 +62,6 @@ const FindMessagesByThread = async (req, res) => {
 module.exports = {
   CreateMessage,
   DeleteMessage,
-  FindMessagesByThread
+  FindMessagesByThread,
+  EditMessage
 }

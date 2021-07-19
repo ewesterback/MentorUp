@@ -1,19 +1,16 @@
 import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+//import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import // UnselectMentor,
-// LoadUserFromToken
-'../store/actions/MentorActions'
+// import // UnselectMentor,
+// // LoadUserFromToken
+// '../store/actions/MentorActions'
 import {
-  // FindThreadByMentor,
-  // FindMessagesByThread,
-  // UnselectThread,
   StageMessage,
-  // CreateNewThreadWithNewMessage,
   CreateNewMessageGivenThread,
-  // FindThreadsByUser,
-  // SelectThread
-  DeleteMessageGivenId
+  DeleteMessageGivenId,
+  StageEditMessage,
+  ToggleEditMessage,
+  EditGivenMessage
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
 import moment from 'moment'
@@ -24,81 +21,81 @@ const mapStateToProps = ({ mentorState, messageState }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // unselectMentor: () => dispatch(UnselectMentor()),
-    // findThreads: (id) => dispatch(FindThreadByMentor(id)),
-    // loadMessages: (threadId) => dispatch(FindMessagesByThread(threadId)),
-    // selectThread: (threadId) => dispatch(SelectThread(threadId)),
-    // unselectThread: () => dispatch(UnselectThread()),
-    handleMessage: (content) => dispatch(StageMessage(content)),
-    // createNewThreadWithNewMessage: (mentorId, content) =>
-    //   dispatch(CreateNewThreadWithNewMessage(mentorId, content)),
-    createNewMessageGivenThread: (threadId, content) =>
-      dispatch(CreateNewMessageGivenThread(threadId, content)),
-    // loadThreadsForUser: () => dispatch(FindThreadsByUser()),
-    // setUser: () => dispatch(LoadUserFromToken())
-    deleteMessage: (messageId) => dispatch(DeleteMessageGivenId(messageId))
+    handleMessage: (content) => dispatch(StageEditMessage(content)),
+    sendEditMessage: (body) => dispatch(EditGivenMessage(body)),
+    deleteMessage: (messageId) => dispatch(DeleteMessageGivenId(messageId)),
+    toggleEditMessage: (id) => dispatch(ToggleEditMessage(id))
   }
 }
 
 const MessageCard = (props) => {
-  console.log(props.message)
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
   }
-  console.log(props.messageState)
   //handle send message
-  const onSend = (e) => {
+  const onUpdate = (e) => {
     e.preventDefault()
-    console.log(props.messageState)
-    props.createNewMessageGivenThread(
-      props.messageState.selectedThread,
-      props.messageState.messageContent
-    )
+    let body = { ...props.message }
+    body.content = props.messageState.editMessageContent
+    props.sendEditMessage(body)
+    props.toggleEditMessage(null)
     props.handleMessage('')
   }
   const onDelete = (id) => {
-    console.log(id)
     props.deleteMessage(id)
+  }
+  const onSelectEdit = (id) => {
+    props.toggleEditMessage(id)
+    props.handleMessage(props.message.content)
+  }
+  const onCancel = (e) => {
+    e.preventDefault()
+    props.toggleEditMessage(null)
+    props.handleMessage('')
   }
   return (
     <div className="message-card">
-      {/* <p>profile page</p>
-      <div>{mappedThreads}</div>
-      <p>******** Messages **************</p>
-      <div>{mappedMessages}</div> */}
-      <p
-        className={
-          props.message.User.id === props.mentorState.user.id
-            ? 'sender-message'
-            : 'recipient-message'
-        }
-      >
-        {props.message.content}
-      </p>
-      <p>
-        {moment(props.message.updatedAt).format(
-          'dddd, MMMM Do YYYY, h:mm:ss a'
-        )}
-      </p>
-      <Button
-        label="Delete"
-        onClick={() => {
-          onDelete(props.message.id)
-        }}
-      />
-
-      {/* <Input
-        placeholder="message"
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        value={props.messageState.messageContent}
-        onChange={handleInput}
-      />
-      <Button
-        label="Send Message"
-        variant="success"
-        className="rainbow-m-around_medium"
-        onClick={onSend}
-      /> */}
+      {props.messageState.editMessage == props.message.id ? (
+        <div>
+          <Input
+            onChange={handleInput}
+            value={props.messageState.editMessageContent}
+          />
+          <Button label="Update" onClick={onUpdate} />
+          <Button label="Cancel" onClick={onCancel} />
+        </div>
+      ) : (
+        <div>
+          <p
+            className={
+              props.message.User.id === props.mentorState.user.id
+                ? 'sender-message'
+                : 'recipient-message'
+            }
+          >
+            {props.message.content}
+          </p>
+          <p>
+            {moment(props.message.updatedAt).format(
+              'dddd, MMMM Do YYYY, h:mm:ss a'
+            )}
+          </p>
+          {props.message.User.id === props.mentorState.user.id ? (
+            <div>
+              <Button
+                label="Delete"
+                onClick={() => {
+                  onDelete(props.message.id)
+                }}
+              />
+              <Button
+                label="Edit"
+                onClick={() => onSelectEdit(props.message.id)}
+              />
+            </div>
+          ) : null}
+        </div>
+      )}
     </div>
   )
 }

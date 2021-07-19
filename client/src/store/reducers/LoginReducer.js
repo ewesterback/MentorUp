@@ -8,7 +8,7 @@ const {
 } = require('../types')
 
 const iState = {
-  user: null,
+  //user: null,
   authenticated: false,
   formInput: {
     email: '',
@@ -38,7 +38,7 @@ const LoginReducer = (state = iState, action) => {
       localStorage.setItem('token', action.payload.token)
       return {
         ...state,
-        user: action.payload,
+        //user: action.payload,
         authenticated: true,
         registrationError: '',
         loginError: ''
