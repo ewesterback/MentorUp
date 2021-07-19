@@ -44,18 +44,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      isMentor: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-      },
+      // isMentor: {
+      //   type: DataTypes.BOOLEAN,
+      //   allowNull: false
+      // },
       availableToMentor: {
         type: DataTypes.BOOLEAN,
         allowNull: true
       },
-      field: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
+      // field: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false
+      // },
       state: {
         type: DataTypes.STRING,
         allowNull: false
@@ -67,6 +67,26 @@ module.exports = (sequelize, DataTypes) => {
       photo: {
         type: DataTypes.STRING(255),
         allowNull: false
+      },
+      bio: {
+        type: DataTypes.STRING(280),
+        allowNull: true
+      },
+      passions: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      currentTitle: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      currentCompany: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      yearsInIndustry: {
+        type: DataTypes.ENUM('0-1', '1-2', '3-5', '5-10', '10+'),
+        allowNull: true
       }
     },
     {

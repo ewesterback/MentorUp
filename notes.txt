@@ -22,3 +22,6 @@ sequelize model:generate --name Thread --attributes mentorId:string
 sequelize model:generate --name Message --attributes threadId:string
 
 ->sequelize migration:generate --name add-author-to-message
+
+
+https://imgur.com/IPrg772.jpg
