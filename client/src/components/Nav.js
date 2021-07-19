@@ -2,21 +2,38 @@ import { React, useEffect } from 'react'
 import { NavLink, Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { LoadMentors, SelectMentor } from '../store/actions/MentorActions'
+import { SetAuth } from '../store/actions/LoginActions'
 import { Input, Button } from 'react-rainbow-components'
 
 const mapStateToProps = ({ mentorState, loginState }) => {
-  return { mentorState, loginState }
+  return { loginState }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadMentors: () => dispatch(LoadMentors()),
-    setSelectedMentor: (mentor) => dispatch(SelectMentor(mentor))
+    setAuth: (bool) => dispatch(SetAuth(bool))
     // handleLoginInput: (input) => dispatch(StageLogin(input))
   }
 }
 
 const Nav = (props) => {
+  const getToken = () => {
+    let token = localStorage.getItem('token')
+    if (token) {
+      return props.setAuth(true)
+    }
+  }
+  //set authenication again if user refreshed page
+  useEffect(() => {
+    getToken()
+  }, [])
+
+  const onLogout = () => {
+    localStorage.clear()
+    props.setAuth(false)
+    props.history.push(`/`)
+  }
+
   return (
     <div className="mentor-card">
       {props.loginState.authenticated ? (
@@ -27,6 +44,7 @@ const Nav = (props) => {
           <NavLink className="nav-link" to="/messages">
             Messages
           </NavLink>
+          <Button label="logout" onClick={onLogout} />
         </div>
       ) : (
         <p>hi</p>
