@@ -23,7 +23,14 @@ const EntryPoint = (props) => {
     <div className="entry-point">
       <Login />
       <hr />
-      <Register />
+      <div>
+        <h3>Need an account? Register below!</h3>
+        <Button
+          label="Register for an account"
+          onClick={() => props.history.push('/register')}
+        />
+      </div>
+      {/* <Register /> */}
     </div>
   )
 }

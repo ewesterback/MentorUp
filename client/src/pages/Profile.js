@@ -14,6 +14,8 @@ import {
   RadioButtonGroup
 } from 'react-rainbow-components'
 
+//plan to have all fields disabled until user clicks edit
+//right now need to keep password and email uneditable
 const mapStateToProps = ({ loginState }) => {
   return { loginState }
 }
