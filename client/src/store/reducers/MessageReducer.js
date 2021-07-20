@@ -83,12 +83,6 @@ const MessageReducer = (state = iState, action) => {
         )
       }
     case EDIT_MESSAGE:
-      console.log(action.payload)
-      // state.messages.forEach((message)=>{
-      //   if (message.id == action.payload.id) {
-      //     message.content = action.payload.content
-      //   }
-      // })
       return {
         ...state,
         messageContent: '',
