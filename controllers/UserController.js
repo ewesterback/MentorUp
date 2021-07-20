@@ -72,7 +72,9 @@ const Register = async (req, res) => {
 
 const FindAllUsers = async (req, res) => {
   try {
-    let users = await User.findAll({})
+    let users = await User.findAll({
+      where: { availableToMentor: 1 }
+    })
     res.send(users)
   } catch (error) {
     throw error
@@ -92,6 +94,18 @@ const FindUserFromToken = async (req, res) => {
     throw error
   }
 }
+const FindUserFromTokenReturnAll = async (req, res) => {
+  try {
+    const userId = parseInt(res.locals.payload.id)
+    let user = await User.findAll({
+      where: { id: userId }
+    })
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
 const FindEmail = async (req, res) => {
   try {
     let savedEmail = req.params.new_email
@@ -110,5 +124,6 @@ module.exports = {
   Register,
   FindAllUsers,
   FindUserFromToken,
+  FindUserFromTokenReturnAll,
   FindEmail
 }
