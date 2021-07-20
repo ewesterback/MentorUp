@@ -93,7 +93,7 @@ const MessageReducer = (state = iState, action) => {
         ...state,
         messageContent: '',
         message: state.messages.forEach((message) => {
-          if (message.id == action.payload.id) {
+          if (message.id === action.payload.id) {
             message.content = action.payload.content
           }
         })
