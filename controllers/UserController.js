@@ -73,7 +73,7 @@ const Register = async (req, res) => {
 const FindAllUsers = async (req, res) => {
   try {
     let users = await User.findAll({
-      where: { availableToMentor: 1 }
+      where: { availableToMentor: true }
     })
     res.send(users)
   } catch (error) {

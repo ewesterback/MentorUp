@@ -36,8 +36,10 @@ const Register = (props) => {
   const onNext = async () => {
     //const email = { email:  }
     //props.verifyEmail(props.loginState.formInput.email)
+    console.log(props.loginState.formInput.email)
     let val = await FindEmail(props.loginState.formInput.email)
     //val.data
+    console.log(val.data)
     if (val.data.length > 0) {
       setRegistraionError('Email already in use')
     } else {
@@ -59,8 +61,7 @@ const Register = (props) => {
     }
 
     props.registerUser(regBody)
-    //make sure to only push if okay!!!!
-    //props.history.push(`/`)
+    props.history.push(`/`)
   }
 
   const getToken = () => {

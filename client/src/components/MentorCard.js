@@ -24,15 +24,17 @@ const MentorCard = (props) => {
 
   return (
     <div className="mentor-card">
-      <p>mentors</p>
-      <p>{props.mentor.firstName}</p>
-      <p>{props.mentor.lastName}</p>
-      <p>{props.mentor.field}</p>
-      <Button
-        label="Learn More"
-        variant="brand"
-        onClick={() => onClick(props.mentor)}
-      />
+      <div className="top-bar"></div>
+      <img className="mentor-card-image" src={props.mentor.photo} />
+      <div className="content">
+        <p>
+          {props.mentor.firstName} {props.mentor.lastName}
+        </p>
+        <p>
+          {props.mentor.currentCompany} | {props.mentor.currentTitle}
+        </p>
+        <button onClick={() => onClick(props.mentor)}>Connect</button>
+      </div>
     </div>
   )
 }

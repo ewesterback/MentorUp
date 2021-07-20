@@ -2,44 +2,37 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Messages*/
 
 .sender-message {
   background-color: aqua;
 }
 .recipient-message {
   background-color: yellow;
+}
+
+/* Mentor Card*/
+
+.mentor-card {
+  display: grid;
+  grid-template-columns: 1fr 8em 8em 1fr;
+  grid-template-rows: 4em 8em 8em 4em 1fr;
+  gap: 0px 0px;
+  border: black;
+  margin: 1em;
+  max-width: 32em;
+}
+.top-bar {
+  grid-area: 1 / 1 / 3 / 5;
+  background-color: #9ed0c9;
+}
+.mentor-card-image {
+  grid-area: 2 / 2 / 4 / 4;
+  max-height: 16em;
+  max-width: 16em;
+  border-radius: 8em;
+}
+
+.content {
+  grid-area: 5 / 1 / 6 / 5;
 }
