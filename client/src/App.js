@@ -5,10 +5,13 @@ import { connect } from 'react-redux'
 import { SetAuth } from './store/actions/LoginActions'
 import Login from './components/Login'
 import Register from './components/Register'
+import EntryPoint from './pages/EntryPoint'
 import Mentor from './pages/Mentors'
 import MentorDetail from './pages/MentorDetail'
 import Messages from './pages/Messages'
 import Nav from './components/Nav'
+import Profile from './pages/Profile'
+import HomePage from './pages/HomePage'
 
 const mapStateToProps = ({ loginState }) => {
   return { loginState }
@@ -37,8 +40,9 @@ function App(props) {
       <h1>Header</h1>
       <h2>Subheader</h2>
       <Nav />
-      {props.loginState.authenticated ? null : <Login />}
+      {/* {props.loginState.authenticated ? <Profile /> : <EntryPoint />} */}
       <p>---------------Before Routes----------------------</p>
+      <Route exact path="/" render={(props) => <HomePage {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route exact path="/mentors" render={(props) => <Mentor {...props} />} />
       <Route path="/register" render={(props) => <Register {...props} />} />
