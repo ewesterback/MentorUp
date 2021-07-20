@@ -37,7 +37,22 @@ const LoginReducer = (state = iState, action) => {
       return {
         ...state,
         registrationError: '',
-        loginError: ''
+        loginError: '',
+        formInput: {
+          email: '',
+          firstName: '',
+          lastName: '',
+          password: '',
+          availableToMentor: false,
+          state: '',
+          linkedin: '',
+          photo: '',
+          bio: '',
+          passions: '',
+          currentTitle: '',
+          currentCompany: '',
+          yearsInIndustry: ''
+        }
       }
     case USER_LOGIN:
       localStorage.setItem('token', action.payload.token)
@@ -47,7 +62,22 @@ const LoginReducer = (state = iState, action) => {
         //user: action.payload,
         authenticated: true,
         registrationError: '',
-        loginError: ''
+        loginError: '',
+        formInput: {
+          email: '',
+          firstName: '',
+          lastName: '',
+          password: '',
+          availableToMentor: false,
+          state: '',
+          linkedin: '',
+          photo: '',
+          bio: '',
+          passions: '',
+          currentTitle: '',
+          currentCompany: '',
+          yearsInIndustry: ''
+        }
       }
     case STAGE_LOGIN:
       return {

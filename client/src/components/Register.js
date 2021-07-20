@@ -7,6 +7,7 @@ import {
   StageLogin,
   CheckEmail
 } from '../store/actions/LoginActions'
+import { FindEmail } from '../services/UserService'
 import {
   Input,
   Button,
@@ -30,10 +31,19 @@ const mapDispatchToProps = (dispatch) => {
 
 const Register = (props) => {
   const [emailVerified, setEmailVerified] = useState(false)
+  const [registrationError, setRegistraionError] = useState('')
 
-  const onNext = () => {
-    const email = { email: props.loginState.formInput.email }
-    props.verifyEmail(email)
+  const onNext = async () => {
+    //const email = { email:  }
+    //props.verifyEmail(props.loginState.formInput.email)
+    let val = await FindEmail(props.loginState.formInput.email)
+    //val.data
+    if (val.data.length > 0) {
+      setRegistraionError('Email already in use')
+    } else {
+      setEmailVerified(true)
+      setRegistraionError('')
+    }
   }
   const handleInputChange = (e) => {
     let key = e.target.name
@@ -74,15 +84,29 @@ const Register = (props) => {
   ]
   return (
     <div className="register-page">
-      <Input
-        name="email"
-        placeholder="email"
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        value={props.loginState.formInput.email}
-        onChange={handleInputChange}
-      />
-      <Button label="Next" onClick={onNext} />
-      {emailVerified ? null : (
+      <Button label="Back to Login" onClick={() => props.history.push('/')} />
+      {emailVerified ? (
+        <Input
+          name="email"
+          placeholder="email"
+          disabled
+          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+          value={props.loginState.formInput.email}
+          onChange={handleInputChange}
+        />
+      ) : (
+        <Input
+          name="email"
+          placeholder="email"
+          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+          value={props.loginState.formInput.email}
+          onChange={handleInputChange}
+        />
+      )}
+
+      {registrationError ? <p>{registrationError}</p> : null}
+      {emailVerified ? null : <Button label="Next" onClick={onNext} />}
+      {!emailVerified ? null : (
         <div>
           <Input
             name="firstName"
