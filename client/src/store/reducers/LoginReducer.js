@@ -5,7 +5,8 @@ const {
   STAGE_LOGIN,
   SET_LOGIN_ERROR,
   SET_REG_ERROR,
-  LOAD_USER
+  LOAD_USER,
+  CHECK_REG_EMAIL
 } = require('../types')
 
 const iState = {

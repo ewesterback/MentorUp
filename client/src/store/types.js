@@ -7,6 +7,7 @@ export const SET_AUTH = 'SET_AUTH'
 export const STAGE_LOGIN = 'STAGE_LOGIN'
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR'
 export const SET_REG_ERROR = 'SET_REG_ERROR'
+export const CHECK_REG_EMAIL = 'CHECK_REG_EMAIL'
 
 //mentors
 export const LOAD_MENTORS = 'LOAD_MENTORS'

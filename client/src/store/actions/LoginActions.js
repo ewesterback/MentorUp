@@ -1,7 +1,8 @@
 import {
   UserLogin,
   UserRegister,
-  LoadUserUsingToken
+  LoadUserUsingToken,
+  FindEmail
 } from '../../services/UserService'
 import {
   USER_LOGIN,
@@ -10,7 +11,8 @@ import {
   STAGE_LOGIN,
   SET_LOGIN_ERROR,
   SET_REG_ERROR,
-  LOAD_USER
+  LOAD_USER,
+  CHECK_REG_EMAIL
 } from '../types'
 
 export const LoadUser = (email, password) => {
@@ -62,16 +64,17 @@ export const RegisterUser = (input) => {
     }
   }
 }
-// export const FindAllUsers = () => {
-//   return async (dispatch) => {
-//     try {
-//       await LoadAllUsers()
-//       dispatch({ type: USER_REGISTER })
-//     } catch (error) {
-//       throw error
-//     }
-//   }
-// }
+export const CheckEmail = (email) => {
+  return async (dispatch) => {
+    try {
+      const val = await FindEmail(email)
+      console.log(val)
+      dispatch({ type: SET_REG_ERROR, payload: 'Email already in use' })
+    } catch (error) {
+      throw error
+    }
+  }
+}
 
 export const StageLogin = (formValue) => ({
   type: STAGE_LOGIN,
