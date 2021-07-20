@@ -64,6 +64,7 @@ const LoginReducer = (state = iState, action) => {
     case SET_LOGIN_ERROR:
       return { ...state, loginError: action.payload }
     case SET_REG_ERROR:
+      console.log(action.payload)
       return { ...state, registrationError: action.payload }
     default:
       return { ...state }

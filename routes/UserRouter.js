@@ -11,6 +11,6 @@ router.get(
   middleware.verifyToken,
   controller.FindUserFromToken
 )
-router.get('/email', controller.FindEmail)
+router.get('/email/:new_email', controller.FindEmail)
 
 module.exports = router

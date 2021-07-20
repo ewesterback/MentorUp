@@ -43,7 +43,9 @@ export const LoadUserUsingToken = async () => {
 
 export const FindEmail = async (email) => {
   try {
-    const res = await axios.get(`${BASE_URL}/user/email`, email)
+    console.log(email)
+    let newEmail = email.email
+    const res = await axios.get(`${BASE_URL}/user/email/${newEmail}`)
     console.log('res')
     return res
   } catch (error) {}

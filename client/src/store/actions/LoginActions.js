@@ -69,7 +69,13 @@ export const CheckEmail = (email) => {
     try {
       const val = await FindEmail(email)
       console.log(val)
-      dispatch({ type: SET_REG_ERROR, payload: 'Email already in use' })
+      let errorMessage = ''
+      if (val.data.length > 0) {
+        errorMessage = 'Email already in use'
+      } else {
+        errorMessage = ''
+      }
+      dispatch({ type: SET_REG_ERROR, payload: errorMessage })
     } catch (error) {
       throw error
     }

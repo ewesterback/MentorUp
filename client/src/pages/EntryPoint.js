@@ -3,20 +3,7 @@ import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Input, Button } from 'react-rainbow-components'
 import Login from '../components/Login'
-import Register from '../components/Register'
-
-// const mapStateToProps = ({ mentorState }) => {
-//   return { mentorState }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     loadMentors: () => dispatch(LoadMentors()),
-//     setUser: () => dispatch(LoadUserFromToken())
-//     // setAuth: (bool) => dispatch(SetAuth(bool)),
-//     // handleLoginInput: (input) => dispatch(StageLogin(input))
-//   }
-// }
+//import Register from '../components/Register'
 
 const EntryPoint = (props) => {
   return (
@@ -30,7 +17,6 @@ const EntryPoint = (props) => {
           onClick={() => props.history.push('/register')}
         />
       </div>
-      {/* <Register /> */}
     </div>
   )
 }

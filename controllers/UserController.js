@@ -94,10 +94,9 @@ const FindUserFromToken = async (req, res) => {
 }
 const FindEmail = async (req, res) => {
   try {
-    //const userId = 1
-    const { email } = parseInt(res.body)
+    let savedEmail = req.params.new_email
     let user = await User.findAll({
-      where: { email: email },
+      where: { email: savedEmail },
       attributes: ['id']
     })
     res.send(user)
