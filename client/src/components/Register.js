@@ -6,7 +6,13 @@ import {
   SetAuth,
   StageLogin
 } from '../store/actions/LoginActions'
-import { Input, Button } from 'react-rainbow-components'
+import {
+  Input,
+  Button,
+  CheckboxToggle,
+  Textarea,
+  RadioButtonGroup
+} from 'react-rainbow-components'
 
 const mapStateToProps = ({ loginState }) => {
   return { loginState }
@@ -32,8 +38,14 @@ const Register = (props) => {
   //   modifiedState.password = e.target.value
   //   props.handleLoginInput(modifiedState)
   // }
-  const handleRegister = () => {
-    props.registerUser(props.loginState.formInput)
+  const handleRegister = (e) => {
+    e.preventDefault()
+    let regBody = props.loginState.formInput
+    if (!regBody.photo) {
+      regBody.photo = 'https://imgur.com/IPrg772.jpg'
+    }
+
+    props.registerUser(regBody)
     //make sure to only push if okay!!!!
     //props.history.push(`/`)
   }
@@ -45,13 +57,24 @@ const Register = (props) => {
     }
   }
 
+  const handleAvailToMentorChange = () => {
+    let modifiedState = { ...props.loginState.formInput }
+    modifiedState.availableToMentor =
+      !props.loginState.formInput.availableToMentor
+    props.handleLoginInput(modifiedState)
+  }
+  const options = [
+    { value: '0-1', label: '0to1' },
+    { value: '1-3', label: '1to3' },
+    { value: '3-5', label: '3to5' },
+    { value: '10+', label: '10+' }
+  ]
   return (
-    <div className="login-page">
-      <h3>Login</h3>
-      <p>{props.loginState.authenticated}</p>
+    <div className="register-page">
       <Input
         name="email"
         placeholder="email"
+        // disabled
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
         value={props.loginState.formInput.email}
         onChange={handleInputChange}
@@ -72,17 +95,17 @@ const Register = (props) => {
       />
       <Input
         name="password"
+        label="password"
         placeholder="password"
+        type="password"
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
         value={props.loginState.formInput.password}
         onChange={handleInputChange}
       />
-      <Input
-        name="field"
-        placeholder="Field i.e. Software Engineering, Biology"
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        value={props.loginState.formInput.field}
-        onChange={handleInputChange}
+      <CheckboxToggle
+        value={props.loginState.formInput.availableToMentor}
+        onChange={handleAvailToMentorChange}
+        label="Do you want to be a mentor?"
       />
       <Input
         name="state"
@@ -103,6 +126,43 @@ const Register = (props) => {
         placeholder="Profile Pic url"
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
         value={props.loginState.formInput.photo}
+        onChange={handleInputChange}
+      />
+
+      <Input
+        name="currentTitle"
+        placeholder="Current Title i.e. Junior Developer, Student, Actively Looking"
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        value={props.loginState.formInput.currentTitle}
+        onChange={handleInputChange}
+      />
+      <Input
+        name="currentCompany"
+        placeholder="Current Company"
+        //className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        value={props.loginState.formInput.currentCompany}
+        onChange={handleInputChange}
+      />
+      <RadioButtonGroup
+        size="medium"
+        name="yearsInIndustry"
+        label="Years in Industry"
+        options={options}
+        value={props.loginState.formInput.yearsInIndustry}
+        onChange={handleInputChange}
+      />
+      <Textarea
+        name="bio"
+        placeholder="Please enter a brief bio describing a little bit about yourself and areas that you are knowledgable in"
+        value={props.loginState.formInput.bio}
+        onChange={handleInputChange}
+      />
+      <Input
+        name="passions"
+        placeholder="i.e. React Redux, Knitting, and Travelling"
+        label="Enter a few or your passions, both in your job and outside of 9-5"
+        //className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        value={props.loginState.formInput.passions}
         onChange={handleInputChange}
       />
       <Button

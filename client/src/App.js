@@ -41,7 +41,7 @@ function App(props) {
       <p>---------------Before Routes----------------------</p>
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route exact path="/mentors" render={(props) => <Mentor {...props} />} />
-      <Route path="/regsiter" render={(props) => <Register {...props} />} />
+      <Route path="/register" render={(props) => <Register {...props} />} />
       <Route
         path="/mentors/:id"
         render={(props) => <MentorDetail {...props} />}

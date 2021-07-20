@@ -40,3 +40,10 @@ export const LoadUserUsingToken = async () => {
     throw error
   }
 }
+
+export const FindEmail = async (email) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/user/token`)
+    console.log('res')
+  } catch (error) {}
+}

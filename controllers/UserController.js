@@ -92,10 +92,24 @@ const FindUserFromToken = async (req, res) => {
     throw error
   }
 }
+const FindEmail = async (req, res) => {
+  try {
+    //const userId = 1
+    const { email } = parseInt(res.body)
+    let user = await User.findAll({
+      where: { email: email },
+      attributes: ['id']
+    })
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   Login,
   Register,
   FindAllUsers,
-  FindUserFromToken
+  FindUserFromToken,
+  FindEmail
 }

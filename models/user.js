@@ -85,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
       },
       yearsInIndustry: {
-        type: DataTypes.ENUM('0-1', '1-2', '3-5', '5-10', '10+'),
+        type: DataTypes.ENUM('0-1', '1-3', '3-5', '5-10', '10+'),
         allowNull: true
       }
     },
