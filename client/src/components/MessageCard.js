@@ -72,7 +72,15 @@ const MessageCard = (props) => {
         </div>
       ) : (
         <div>
-          <p>{props.message.content}</p>
+          <p
+            className={
+              props.message.User.id === props.mentorState.user.id
+                ? 'sender-message-content'
+                : 'recipient-message-content'
+            }
+          >
+            {props.message.content}
+          </p>
           <p>
             {moment(props.message.updatedAt).format(
               'dddd, MMMM Do YYYY, h:mm:ss a'

@@ -46,21 +46,28 @@
   flex-direction: column;
   width: 100vw;
 }
-.sender-message,
-.recipient-message {
-  width: 70vw;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
+
 .sender-message {
+  align-items: center;
+  width: 70vw;
+  margin-left: 25vw;
+}
+.recipient-message {
+  align-items: flex-end;
+  width: 70vw;
+  margin-left: 5vw;
+}
+.sender-message-content {
   background-color: #415164;
   color: white;
-  align-items: flex-end;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
-.recipient-message {
+.recipient-message-content {
   background-color: #9ed0c9;
   color: black;
-  align-items: flex-end;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 /* Mentor Page*/
 .mentor-page {

@@ -124,22 +124,6 @@ const Messages = (props) => {
           />
         </div>
       )}
-      {/* <div className="side-threads">{mappedThreads}</div>
-      <div className="side-messages">
-        {mappedMessages}
-        <Input
-          placeholder="message"
-          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-          value={props.messageState.messageContent}
-          onChange={handleInput}
-        />
-        <Button
-          label="Send Message"
-          variant="success"
-          className="rainbow-m-around_medium"
-          onClick={onSend}
-        />
-      </div> */}
     </div>
   )
 }
