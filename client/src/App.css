@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Staatliches&display=swap');
+
+/*
+font-family: 'Oswald', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Staatliches', cursive;
+*/
 .App {
   text-align: center;
+  background-color: #9ed0c9;
+  min-height: 100vh;
 }
 /* Nav Bar*/
 .nav-bar {
@@ -21,6 +30,32 @@
 .nav-link {
   text-decoration: none;
   color: white;
+  font-family: 'Staatliches', sans-serif;
+}
+/* Entry Point */
+.entry-point {
+  width: 100vw;
+
+  background-image: url('./assets/landingpage.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+}
+.entry-left {
+  grid-area: 1 / 1 / 2 / 2;
+  font-family: 'Raleway', sans-serif;
+  margin: 1rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.entry-point h1 {
+  font-family: 'Staatliches', sans-serif;
 }
 
 /* Messages*/

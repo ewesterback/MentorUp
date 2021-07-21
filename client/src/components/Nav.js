@@ -37,9 +37,7 @@ const Nav = (props) => {
           </NavLink>
           <button onClick={onLogout}>Logout</button>
         </div>
-      ) : (
-        <p>hi</p>
-      )}
+      ) : null}
     </div>
   )
 }
