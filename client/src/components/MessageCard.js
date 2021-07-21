@@ -83,20 +83,22 @@ const MessageCard = (props) => {
           </p>
           <div className="message-details">
             <p className="timestamp">
-              {moment(props.message.updatedAt).format(
-                'dddd, MMMM Do YYYY, h:mm a'
-              )}
+              {moment(props.message.updatedAt).format('MMMM Do YYYY, h:mm a')}
             </p>
             {props.message.User.id === props.mentorState.user.id ? (
               <div>
                 <button
+                  className="message-delete"
                   onClick={() => {
                     onDelete(props.message.id)
                   }}
                 >
                   Delete
                 </button>
-                <button onClick={() => onSelectEdit(props.message.id)}>
+                <button
+                  className="message-edit"
+                  onClick={() => onSelectEdit(props.message.id)}
+                >
                   Edit
                 </button>
               </div>
