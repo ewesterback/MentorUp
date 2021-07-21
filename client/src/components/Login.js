@@ -1,5 +1,4 @@
-import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { React } from 'react'
 import { connect } from 'react-redux'
 import { LoadUser, SetAuth, StageLogin } from '../store/actions/LoginActions'
 import { Input, Button } from 'react-rainbow-components'
@@ -32,23 +31,10 @@ const Login = (props) => {
       props.loginState.formInput.email,
       props.loginState.formInput.password
     )
-
-    //make sure to only push if okay!!!!
-    //props.history.push(`/`)
-    //---------------------------
-  }
-
-  const getToken = () => {
-    let token = localStorage.getItem('token')
-    if (token) {
-      return props.setAuth(true)
-    }
   }
 
   return (
     <div className="login-page">
-      <h3>Login</h3>
-      <p>{props.loginState.authenticated}</p>
       <Input
         placeholder="email"
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
@@ -57,6 +43,7 @@ const Login = (props) => {
       />
       <Input
         placeholder="password"
+        type="password"
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
         value={props.loginState.formInput.password}
         onChange={handlePasswordChange}
@@ -70,31 +57,6 @@ const Login = (props) => {
         variant="brand"
         className="rainbow-m-around_medium"
       />
-      {/* <img src={logo} />
-      <div className="welcome">
-        <h2>Welcome back, honey!</h2>
-        <h3>Let's get dew it.</h3>
-      </div>
-      <form className="login-form">
-        <input
-          type="email"
-          value={email}
-          onChange={handleEmailChange}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder="Password"
-        />
-        <div className="button-box">
-          <button onClick={logIn}>Log In</button>
-        </div>
-      </form>
-      <footer>
-        <br/><a href="/register">Need an account?</a>
-      </footer> */}
     </div>
   )
 }
