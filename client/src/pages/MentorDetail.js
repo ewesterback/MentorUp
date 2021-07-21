@@ -76,25 +76,36 @@ const MentorDetail = (props) => {
         <Button label="Go Back to Mentor Search" onClick={onClick} />
         <div className="mentor-columns">
           <div className="mentor-left">
-            <img src={mentor.photo} />
+            <img src={mentor.photo} alt="" />
           </div>
           <div className="mentor-right">
-            <p>
+            <h2 className="mentor-detail-text">
               {props.mentorState.selectedMentor.firstName} {mentor.lastName}
+            </h2>
+            <p className="mentor-detail-text">
+              Current Title: {mentor.currentTitle}
             </p>
-            <p>Current Title: {mentor.currentTitle}</p>
-            <p>Current Company: {mentor.currentCompany}</p>
-            <p>{mentor.yearsInIndustry} years of experience</p>
-            <a href={mentor.linkedin} target="_blank">
+            <p className="mentor-detail-text">
+              Current Company: {mentor.currentCompany}
+            </p>
+            <p className="mentor-detail-text">
+              {mentor.yearsInIndustry} years of experience
+            </p>
+            <a
+              className="mentor-detail-text"
+              href={mentor.linkedin}
+              target="_blank"
+            >
               Linkedin
             </a>
-            <p>Passions: {mentor.passions}</p>
-            <p>Bio: {mentor.bio}</p>
+            <p className="mentor-detail-text">Passions: {mentor.passions}</p>
+            <p className="mentor-detail-text">Bio: {mentor.bio}</p>
           </div>
         </div>
       </div>
       <div className="messaging-pane">
         {mappedMessages}
+        <div className="spacer"></div>
         <Input
           placeholder="message"
           className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto message-input"
@@ -105,7 +116,6 @@ const MentorDetail = (props) => {
           Send Message
         </button>
       </div>
-      <p>mentors</p>
     </div>
   )
 }

@@ -32,10 +32,14 @@ const Nav = (props) => {
           <NavLink className="nav-link" to="/mentors">
             Look for a Mentor
           </NavLink>
+          <p className="nav-link"> | </p>
           <NavLink className="nav-link" to="/messages">
             Messages
           </NavLink>
-          <button onClick={onLogout}>Logout</button>
+          <p className="nav-link"> | </p>
+          <p className="nav-link" onClick={onLogout}>
+            Logout
+          </p>
         </div>
       ) : null}
     </div>

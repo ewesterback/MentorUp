@@ -9,6 +9,8 @@ font-family: 'Staatliches', cursive;
   text-align: center;
   background-color: #9ed0c9;
   min-height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  margin: 0 auto;
 }
 /* Nav Bar*/
 .nav-bar {
@@ -16,7 +18,7 @@ font-family: 'Staatliches', cursive;
   text-decoration: none;
   color: white;
   width: 100vw;
-  height: 2em;
+  height: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,12 +27,20 @@ font-family: 'Staatliches', cursive;
 }
 .nav-links {
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 .nav-link {
   text-decoration: none;
   color: white;
   font-family: 'Staatliches', sans-serif;
+  font-size: 2rem;
+  margin: 0.25em;
+  /* margin-left: 1rem;
+  margin-right: 1rem; */
 }
 /* Entry Point */
 .entry-point {
@@ -249,6 +259,7 @@ font-family: 'Staatliches', cursive;
 .mentor-columns {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .mentor-left img {
   max-height: 20em;
@@ -260,14 +271,21 @@ font-family: 'Staatliches', cursive;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin: 0 2rem 0 2rem;
 }
 .messaging-pane {
   width: 100vw;
   height: 100vh;
+  padding-top: 3rem;
   background-image: url('./assets/lightGreenBackgroundVertical.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.message-detail-text p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin: 0.25rem 0.25rem 0.25rem 0.25rem;
 }
 
 /*
