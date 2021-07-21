@@ -54,7 +54,13 @@ const MessageCard = (props) => {
     props.handleMessage('')
   }
   return (
-    <div className="message-card">
+    <div
+      className={
+        props.message.User.id === props.mentorState.user.id
+          ? 'sender-message'
+          : 'recipient-message'
+      }
+    >
       {props.messageState.editMessage == props.message.id ? (
         <div>
           <Input
@@ -66,15 +72,7 @@ const MessageCard = (props) => {
         </div>
       ) : (
         <div>
-          <p
-            className={
-              props.message.User.id === props.mentorState.user.id
-                ? 'sender-message'
-                : 'recipient-message'
-            }
-          >
-            {props.message.content}
-          </p>
+          <p>{props.message.content}</p>
           <p>
             {moment(props.message.updatedAt).format(
               'dddd, MMMM Do YYYY, h:mm:ss a'

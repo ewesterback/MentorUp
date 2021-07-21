@@ -97,9 +97,7 @@ const Messages = (props) => {
   console.log(props.messageState.messages)
   console.log(props.messageState.messageThreads)
   const mappedMessages = props.messageState.messages.map((message, i) => (
-    <div key={i}>
-      <MessageCard message={message} />
-    </div>
+    <MessageCard key={i} message={message} />
   ))
   return (
     <div className="message-page">
@@ -109,8 +107,9 @@ const Messages = (props) => {
         <div className="user-messages">
           <div className="message-header">
             <img src={arrow} onClick={onBackClick} />
+            <h4>{selectedName}</h4>
           </div>
-          {mappedMessages}
+          <div className="mapped-messages">{mappedMessages}</div>
           <Input
             placeholder="message"
             className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"

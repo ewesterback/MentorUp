@@ -36,11 +36,31 @@
   flex-direction: row;
   align-items: center;
 }
+.message-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mapped-messages {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+.sender-message,
+.recipient-message {
+  width: 70vw;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
 .sender-message {
-  background-color: aqua;
+  background-color: #415164;
+  color: white;
+  align-items: flex-end;
 }
 .recipient-message {
-  background-color: yellow;
+  background-color: #9ed0c9;
+  color: black;
+  align-items: flex-end;
 }
 /* Mentor Page*/
 .mentor-page {
