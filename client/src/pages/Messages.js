@@ -49,12 +49,20 @@ const Messages = (props) => {
   }, [])
   const onThreadClick = (thread) => {
     let threadId = thread.id
+    let name = ''
+    if (thread.mentor.id === props.mentorState.user.id) {
+      name = `${thread.mentee.firstName} ${thread.mentee.lastName}`
+    } else {
+      name = `${thread.mentor.firstName} ${thread.mentor.lastName}`
+    }
     props.selectThread(threadId)
     props.loadMessages(threadId)
     setMessageClicked(true)
+    setSelectedName(name)
   }
   const onBackClick = () => {
     setMessageClicked(false)
+    setSelectedName('')
   }
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
@@ -100,7 +108,7 @@ const Messages = (props) => {
       ) : (
         <div className="user-messages">
           <div className="message-header">
-            <img src={arrow} />
+            <img src={arrow} onClick={onBackClick} />
           </div>
           {mappedMessages}
           <Input
