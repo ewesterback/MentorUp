@@ -81,25 +81,27 @@ const MessageCard = (props) => {
           >
             {props.message.content}
           </p>
-          <p>
-            {moment(props.message.updatedAt).format(
-              'dddd, MMMM Do YYYY, h:mm:ss a'
-            )}
-          </p>
-          {props.message.User.id === props.mentorState.user.id ? (
-            <div>
-              <Button
-                label="Delete"
-                onClick={() => {
-                  onDelete(props.message.id)
-                }}
-              />
-              <Button
-                label="Edit"
-                onClick={() => onSelectEdit(props.message.id)}
-              />
-            </div>
-          ) : null}
+          <div className="message-details">
+            <p className="timestamp">
+              {moment(props.message.updatedAt).format(
+                'dddd, MMMM Do YYYY, h:mm a'
+              )}
+            </p>
+            {props.message.User.id === props.mentorState.user.id ? (
+              <div>
+                <button
+                  onClick={() => {
+                    onDelete(props.message.id)
+                  }}
+                >
+                  Delete
+                </button>
+                <button onClick={() => onSelectEdit(props.message.id)}>
+                  Edit
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       )}
     </div>

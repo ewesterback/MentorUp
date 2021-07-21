@@ -62,12 +62,18 @@
   color: white;
   border-radius: 0.5rem;
   padding: 1rem;
+  margin: 0;
 }
 .recipient-message-content {
   background-color: #9ed0c9;
   color: black;
   border-radius: 0.5rem;
   padding: 1rem;
+  margin: 0;
+}
+.timestamp {
+  font-size: 0.75rem;
+  margin: 0;
 }
 /* Mentor Page*/
 .mentor-page {
