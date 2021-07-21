@@ -1,6 +1,7 @@
 import { React, useEffect } from 'react'
 import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import MessageCard from '../components/MessageCard'
 import { UnselectMentor } from '../store/actions/MentorActions'
 import {
   FindThreadByMentor,
@@ -66,7 +67,7 @@ const MentorDetail = (props) => {
   }
   //maps all of the messages between user and mentor
   const mappedMessages = props.messageState.messages.map((message, i) => (
-    <p key={i}>{message.content}</p>
+    <MessageCard key={i} message={message} />
   ))
   console.log(props.mentorState.selectedMentor)
   return (
@@ -93,23 +94,16 @@ const MentorDetail = (props) => {
         </div>
       </div>
       <div className="messaging-pane">
-        <p>load messages here</p>
-        {props.messageState.selectedThread ? (
-          <p>{props.messageState.selectedThread}</p>
-        ) : null}
         {mappedMessages}
         <Input
           placeholder="message"
-          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto message-input"
           value={props.messageState.messageContent}
           onChange={handleInput}
         />
-        <Button
-          label="Send Message"
-          variant="success"
-          className="rainbow-m-around_medium"
-          onClick={onSend}
-        />
+        <button className="message-send-message" onClick={onSend}>
+          Send Message
+        </button>
       </div>
       <p>mentors</p>
     </div>
