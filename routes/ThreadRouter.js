@@ -8,14 +8,14 @@ router.post(
   middleware.verifyToken,
   controller.CreateThread
 )
-// ADD COMMENTED LINE BACK IN
-// router.delete(
-//   '/:thread_id',
-//   middleware.stripToken,
-//   middleware.verifyToken,
-//   controller.DeleteThread
-// )
-router.delete('/:thread_id', controller.DeleteThread)
+
+router.delete(
+  '/:thread_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteThread
+)
+
 router.get('/id/:thread_id', controller.FindThreadById)
 router.get(
   '/user',
@@ -29,10 +29,5 @@ router.get(
   middleware.verifyToken,
   controller.FindThreadByUserIdMentorId
 )
-// router.put(
-//   '/:review_id',
-//   middleware.stripToken,
-//   middleware.verifyToken,
-//   controller.UpdateReview
-// )
+
 module.exports = router
