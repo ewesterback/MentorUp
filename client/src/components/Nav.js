@@ -27,23 +27,25 @@ const Nav = (props) => {
   // useEffect(() => {
   //   getToken()
   // }, [])
+  const history = useHistory()
 
   const onLogout = () => {
     localStorage.clear()
     props.setAuth(false)
+    history.push('/')
   }
 
   return (
-    <div className="mentor-card">
+    <div className="nav-bar">
       {props.loginState.authenticated ? (
-        <div>
+        <div className="nav-links">
           <NavLink className="nav-link" to="/mentors">
             Look for a Mentor
           </NavLink>
           <NavLink className="nav-link" to="/messages">
             Messages
           </NavLink>
-          <Button label="logout" onClick={onLogout} />
+          <button onClick={onLogout}>Logout</button>
         </div>
       ) : (
         <p>hi</p>

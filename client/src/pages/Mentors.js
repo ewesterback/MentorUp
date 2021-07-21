@@ -27,11 +27,6 @@ const Mentors = (props) => {
     <MentorCard mentor={mentor} key={i} {...props} />
   ))
   console.log(props.mentorState)
-  return (
-    <div className="mentor-page">
-      <p>mentors</p>
-      {mappedMentors}
-    </div>
-  )
+  return <div className="mentor-page">{mappedMentors}</div>
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Mentors)

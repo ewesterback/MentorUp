@@ -37,11 +37,7 @@ function App(props) {
   }, [])
   return (
     <div className="App">
-      <h1>Header</h1>
-      <h2>Subheader</h2>
-      <Nav />
-      {/* {props.loginState.authenticated ? <Profile /> : <EntryPoint />} */}
-      <p>---------------Before Routes----------------------</p>
+      <Nav {...props} />
       <Route exact path="/" render={(props) => <HomePage {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route exact path="/mentors" render={(props) => <Mentor {...props} />} />

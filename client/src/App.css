@@ -1,36 +1,73 @@
 .App {
   text-align: center;
 }
+/* Nav Bar*/
+.nav-bar {
+  background-color: #415164;
+  text-decoration: none;
+  color: white;
+  width: 100vw;
+  height: 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.nav-links {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
 
 /* Messages*/
-
+.message-photo {
+  max-width: 3em;
+  max-height: 3em;
+}
+.message-recipient-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .sender-message {
   background-color: aqua;
 }
 .recipient-message {
   background-color: yellow;
 }
+/* Mentor Page*/
+.mentor-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 /* Mentor Card*/
-
 .mentor-card {
   display: grid;
-  grid-template-columns: 1fr 8em 8em 1fr;
-  grid-template-rows: 4em 8em 8em 4em 1fr;
+  grid-template-columns: 1fr 4em 4em 1fr;
+  grid-template-rows: 2em 4em 4em 1em 1fr;
   gap: 0px 0px;
-  border: black;
   margin: 1em;
-  max-width: 32em;
+  width: 16em;
+  /*box-shadow: 0px 0px 21px -4px #415164;*/
+  border-radius: 1rem;
+  border: 1px solid #9ed0c9;
 }
 .top-bar {
   grid-area: 1 / 1 / 3 / 5;
   background-color: #9ed0c9;
+  border-radius: 1rem 1rem 0 0;
 }
 .mentor-card-image {
   grid-area: 2 / 2 / 4 / 4;
-  max-height: 16em;
-  max-width: 16em;
-  border-radius: 8em;
+  max-height: 8em;
+  max-width: 8em;
+  border-radius: 4em;
+  border: 1px solid #9ed0c9;
 }
 
 .content {

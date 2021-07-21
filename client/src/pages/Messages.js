@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react'
+import { React, useEffect, useState } from 'react'
 import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Messages = (props) => {
-  //functions
+  const [messageClicked, setMessageClicked] = useState(false)
   useEffect(() => {
     props.loadThreadsForUser()
     props.setUser()
@@ -66,10 +66,18 @@ const Messages = (props) => {
   }
   const mappedThreads = props.messageState.messageThreads.map((thread, i) => (
     <div key={i} onClick={() => onThreadClick(thread.id)}>
-      <p>User ID {props.mentorState.user.id}</p>
-      <p>Name 1: {thread.mentee.firstName}</p>
-      <p>NAme 2: {thread.mentor.firstName}</p>
-      <p>Message: {thread.message.content}</p>
+      {thread.mentor.id === props.mentorState.user.id ? (
+        <div className="message-recipient-name">
+          <img className="message-photo" src={thread.mentee.photo} />
+          <h4>{thread.mentee.firstName}</h4>
+        </div>
+      ) : (
+        <div className="message-recipient-name">
+          <img className="message-photo" src={thread.mentor.photo} />
+          <h4>{thread.mentor.firstName}</h4>
+        </div>
+      )}
+      <p>{thread.message.content}</p>
     </div>
   ))
   console.log(props.messageState.messages)
@@ -80,23 +88,42 @@ const Messages = (props) => {
     </div>
   ))
   return (
-    <div className="profile-page">
-      <p>profile page</p>
-      <div>{mappedThreads}</div>
-      <p>******** Messages **************</p>
-      <div>{mappedMessages}</div>
-      <Input
-        placeholder="message"
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-        value={props.messageState.messageContent}
-        onChange={handleInput}
-      />
-      <Button
-        label="Send Message"
-        variant="success"
-        className="rainbow-m-around_medium"
-        onClick={onSend}
-      />
+    <div className="message-page">
+      {!messageClicked ? (
+        <div className="side-threads">{mappedThreads}</div>
+      ) : (
+        <div className="side-messages">
+          {mappedMessages}
+          <Input
+            placeholder="message"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            value={props.messageState.messageContent}
+            onChange={handleInput}
+          />
+          <Button
+            label="Send Message"
+            variant="success"
+            className="rainbow-m-around_medium"
+            onClick={onSend}
+          />
+        </div>
+      )}
+      {/* <div className="side-threads">{mappedThreads}</div>
+      <div className="side-messages">
+        {mappedMessages}
+        <Input
+          placeholder="message"
+          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+          value={props.messageState.messageContent}
+          onChange={handleInput}
+        />
+        <Button
+          label="Send Message"
+          variant="success"
+          className="rainbow-m-around_medium"
+          onClick={onSend}
+        />
+      </div> */}
     </div>
   )
 }
