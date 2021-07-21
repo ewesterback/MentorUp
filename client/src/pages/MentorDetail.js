@@ -36,6 +36,7 @@ const MentorDetail = (props) => {
   useEffect(() => {
     props.findThreads(props.mentorState.selectedMentor.id)
   }, [])
+  const mentor = props.mentorState.selectedMentor
   //handles message input
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
@@ -67,12 +68,29 @@ const MentorDetail = (props) => {
   const mappedMessages = props.messageState.messages.map((message, i) => (
     <p key={i}>{message.content}</p>
   ))
+  console.log(props.mentorState.selectedMentor)
   return (
     <div className="mentor-detail-page">
-      <Button label="Go Back to Mentor Search" onClick={onClick} />
       <div className="mentor-detail">
-        <p>mentor details</p>
-        <p>{props.mentorState.selectedMentor.firstName}</p>
+        <Button label="Go Back to Mentor Search" onClick={onClick} />
+        <div className="mentor-columns">
+          <div className="mentor-left">
+            <img src={mentor.photo} />
+          </div>
+          <div className="mentor-right">
+            <p>
+              {props.mentorState.selectedMentor.firstName} {mentor.lastName}
+            </p>
+            <p>Current Title: {mentor.currentTitle}</p>
+            <p>Current Company: {mentor.currentCompany}</p>
+            <p>{mentor.yearsInIndustry} years of experience</p>
+            <a href={mentor.linkedin} target="_blank">
+              Linkedin
+            </a>
+            <p>Passions: {mentor.passions}</p>
+            <p>Bio: {mentor.bio}</p>
+          </div>
+        </div>
       </div>
       <div className="messaging-pane">
         <p>load messages here</p>

@@ -189,3 +189,25 @@
 .content {
   grid-area: 5 / 1 / 6 / 5;
 }
+
+/* Mentor Details */
+.mentor-detail {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  background-image: url('./assets/lightGreenBackgroundVertical.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.mentor-left img {
+  max-height: 20em;
+  max-width: 20em;
+  border-radius: 10em;
+}
+.mentor-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
