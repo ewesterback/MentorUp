@@ -69,7 +69,6 @@ const MentorDetail = (props) => {
   const mappedMessages = props.messageState.messages.map((message, i) => (
     <MessageCard key={i} message={message} />
   ))
-  console.log(props.mentorState.selectedMentor)
   return (
     <div className="mentor-detail-page">
       <div className="mentor-detail">

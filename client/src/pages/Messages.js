@@ -67,11 +67,9 @@ const Messages = (props) => {
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
   }
-  console.log(props.messageState)
   //handle send message
   const onSend = (e) => {
     e.preventDefault()
-    console.log(props.messageState)
     props.createNewMessageGivenThread(
       props.messageState.selectedThread,
       props.messageState.messageContent
@@ -104,8 +102,6 @@ const Messages = (props) => {
       )}
     </div>
   ))
-  console.log(props.messageState.messages)
-  console.log(props.messageState.messageThreads)
   const mappedMessages = props.messageState.messages.map((message, i) => (
     <MessageCard key={i} message={message} />
   ))
