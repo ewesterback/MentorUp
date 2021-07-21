@@ -262,4 +262,24 @@ font-family: 'Staatliches', cursive;
     display: flex;
     flex-direction: column;
   }
+  .entry-point {
+    width: 100vw;
+    background-image: url('./assets/tealPatternBackground.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+  }
+  .entry-left {
+    grid-area: 1 / 1 / 1 / 1;
+    font-family: 'Raleway', sans-serif;
+    margin: 1rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
