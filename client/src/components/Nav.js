@@ -17,16 +17,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Nav = (props) => {
-  // const getToken = () => {
-  //   let token = localStorage.getItem('token')
-  //   if (token) {
-  //     return props.setAuth(true)
-  //   }
-  // }
-  // //set authenication again if user refreshed page
-  // useEffect(() => {
-  //   getToken()
-  // }, [])
   const history = useHistory()
 
   const onLogout = () => {

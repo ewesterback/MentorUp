@@ -30,9 +30,16 @@ const MentorCard = (props) => {
         <h3>
           {props.mentor.firstName} {props.mentor.lastName}
         </h3>
-        <p>
-          {props.mentor.currentCompany} | {props.mentor.currentTitle}
-        </p>
+        {!props.mentor.currentCompany || !props.mentor.currentTitle ? (
+          <p>
+            {props.mentor.currentCompany}
+            {props.mentor.currentTitle}
+          </p>
+        ) : (
+          <p>
+            {props.mentor.currentCompany} | {props.mentor.currentTitle}
+          </p>
+        )}
         <button onClick={() => onClick(props.mentor)}>Learn More</button>
       </div>
     </div>
