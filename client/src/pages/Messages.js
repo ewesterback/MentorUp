@@ -105,8 +105,8 @@ const Messages = (props) => {
         <div className="user-threads">{mappedThreads}</div>
       ) : (
         <div className="user-messages">
-          <div className="message-header">
-            <img src={arrow} onClick={onBackClick} />
+          <div className="message-header" onClick={onBackClick}>
+            <img src={arrow} />
             <h4>{selectedName}</h4>
           </div>
           <div className="mapped-messages">{mappedMessages}</div>
