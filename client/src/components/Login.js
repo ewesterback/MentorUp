@@ -37,14 +37,14 @@ const Login = (props) => {
     <div className="login-page">
       <Input
         placeholder="email"
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto login-input"
         value={props.loginState.formInput.email}
         onChange={handleEmailChange}
       />
       <Input
         placeholder="password"
         type="password"
-        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto login-input"
         value={props.loginState.formInput.password}
         onChange={handlePasswordChange}
       />
@@ -55,7 +55,7 @@ const Login = (props) => {
         label="Login"
         onClick={handleLogin}
         variant="brand"
-        className="rainbow-m-around_medium"
+        className="rainbow-m-around_medium login-input"
       />
     </div>
   )

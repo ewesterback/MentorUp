@@ -35,7 +35,6 @@ font-family: 'Staatliches', cursive;
 /* Entry Point */
 .entry-point {
   width: 100vw;
-
   background-image: url('./assets/landingpage.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -56,6 +55,12 @@ font-family: 'Staatliches', cursive;
 }
 .entry-point h1 {
   font-family: 'Staatliches', sans-serif;
+}
+.login-input {
+  margin: 1rem;
+}
+.register-input {
+  margin: 1rem;
 }
 
 /* Messages*/

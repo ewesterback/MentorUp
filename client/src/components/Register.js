@@ -89,17 +89,19 @@ const Register = (props) => {
       {emailVerified ? (
         <Input
           name="email"
-          placeholder="email"
+          label="Email"
+          placeholder="janedoe@gmail.com"
           disabled
-          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
           value={props.loginState.formInput.email}
           onChange={handleInputChange}
         />
       ) : (
         <Input
           name="email"
-          placeholder="email"
-          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+          placeholder="janedoe@gmail.com"
+          label="Email"
+          className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
           value={props.loginState.formInput.email}
           onChange={handleInputChange}
         />
@@ -111,15 +113,19 @@ const Register = (props) => {
         <div>
           <Input
             name="firstName"
-            placeholder="First Name"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            label="First Name"
+            placeholder="Jane"
+            required
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.firstName}
             onChange={handleInputChange}
           />
           <Input
             name="lastName"
-            placeholder="Last Name"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            placeholder="Doe"
+            label="Last Name"
+            required
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.lastName}
             onChange={handleInputChange}
           />
@@ -128,7 +134,8 @@ const Register = (props) => {
             label="password"
             placeholder="password"
             type="password"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            required
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.password}
             onChange={handleInputChange}
           />
@@ -139,37 +146,44 @@ const Register = (props) => {
           />
           <Input
             name="state"
-            placeholder="State - abbrev"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            label="State-postal abbreviation"
+            placeholder="CA"
+            required
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.state}
             onChange={handleInputChange}
           />
           <Input
             name="linkedin"
-            placeholder="LinkedIn url"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            label="LinkedIn url"
+            required
+            placeholder="https://www.linkedin.com/in/jane-doe/"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.linkedin}
             onChange={handleInputChange}
           />
           <Input
             name="photo"
-            placeholder="Profile Pic url"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            label="Profile Picture url"
+            placeholder="https://imgur.com/IPrg772.jpg"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.photo}
             onChange={handleInputChange}
           />
 
           <Input
             name="currentTitle"
-            placeholder="Current Title i.e. Junior Developer, Student, Actively Looking"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            label="Current Title"
+            placeholder="Junior Developer, Student, Actively Looking"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.currentTitle}
             onChange={handleInputChange}
           />
           <Input
             name="currentCompany"
-            placeholder="Current Company"
-            //className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            label="Current Company"
+            placeholder="Twitter"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.currentCompany}
             onChange={handleInputChange}
           />
@@ -183,24 +197,23 @@ const Register = (props) => {
           />
           <Textarea
             name="bio"
-            placeholder="Please enter a brief bio describing a little bit about yourself and areas that you are knowledgable in"
+            label="Bio"
+            placeholder="Brief description about yourself and areas that you are knowledgable in"
             value={props.loginState.formInput.bio}
             onChange={handleInputChange}
+            className="register-input"
           />
           <Input
             name="passions"
-            placeholder="i.e. React Redux, Knitting, and Travelling"
-            label="Enter a few or your passions, both in your job and outside of 9-5"
-            //className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            placeholder="i.e. React Redux, Knitting, and Rock Climbing"
+            label="Passions - in and out of work"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto register-input"
             value={props.loginState.formInput.passions}
             onChange={handleInputChange}
           />
-          <Button
-            label="Register"
-            onClick={handleRegister}
-            variant="brand"
-            className="rainbow-m-around_medium"
-          />
+          <button onClick={handleRegister} className="register-input">
+            Register
+          </button>
         </div>
       )}
     </div>
