@@ -74,7 +74,6 @@ const FindThreadByUserIdMentorId = async (req, res) => {
         ]
       }
     })
-    //could load in all messages here since only one thread
     res.send(threads)
   } catch (error) {
     throw error
