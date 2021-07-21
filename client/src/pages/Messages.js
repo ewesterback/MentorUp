@@ -112,16 +112,13 @@ const Messages = (props) => {
           <div className="mapped-messages">{mappedMessages}</div>
           <Input
             placeholder="message"
-            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto message-input"
             value={props.messageState.messageContent}
             onChange={handleInput}
           />
-          <Button
-            label="Send Message"
-            variant="success"
-            className="rainbow-m-around_medium"
-            onClick={onSend}
-          />
+          <button className="message-send-message" onClick={onSend}>
+            Send Message
+          </button>
         </div>
       )}
     </div>

@@ -23,6 +23,14 @@
 }
 
 /* Messages*/
+.message-page {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url('./assets/tealPatternBackground.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .message-photo {
   max-width: 3em;
   max-height: 3em;
@@ -74,7 +82,7 @@
   margin: 0;
 }
 .recipient-message-content {
-  background-color: #9ed0c9;
+  background-color: white;
   color: black;
   border-radius: 0.5rem;
   padding: 1rem;
@@ -104,6 +112,15 @@
 .message-edit {
   color: #1e6b62;
   border: 1px solid #1e6b62;
+}
+.message-send-message {
+  background-color: #1e6b62;
+  color: white;
+  font-size: 1.25rem;
+  border-radius: 1rem;
+}
+.message-input {
+  margin: 2rem 5vw 0.5rem 5vw;
 }
 /* Mentor Page*/
 .mentor-page {
