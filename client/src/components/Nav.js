@@ -1,9 +1,7 @@
-import { React, useEffect } from 'react'
-import { NavLink, Route, Switch, useHistory } from 'react-router-dom'
+import { React } from 'react'
+import { NavLink, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { LoadMentors, SelectMentor } from '../store/actions/MentorActions'
 import { SetAuth } from '../store/actions/LoginActions'
-import { Input, Button } from 'react-rainbow-components'
 
 const mapStateToProps = ({ loginState }) => {
   return { loginState }
@@ -12,7 +10,6 @@ const mapStateToProps = ({ loginState }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setAuth: (bool) => dispatch(SetAuth(bool))
-    // handleLoginInput: (input) => dispatch(StageLogin(input))
   }
 }
 

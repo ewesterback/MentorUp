@@ -1,8 +1,6 @@
 import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { LoadMentors, LoadUserFromToken } from '../store/actions/MentorActions'
-import { Input, Button } from 'react-rainbow-components'
 import MentorCard from '../components/MentorCard'
 
 const mapStateToProps = ({ mentorState }) => {
@@ -13,8 +11,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadMentors: () => dispatch(LoadMentors()),
     setUser: () => dispatch(LoadUserFromToken())
-    // setAuth: (bool) => dispatch(SetAuth(bool)),
-    // handleLoginInput: (input) => dispatch(StageLogin(input))
   }
 }
 

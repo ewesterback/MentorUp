@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
   UnselectMentor,
@@ -15,7 +14,7 @@ import {
   FindThreadsByUser,
   SelectThread
 } from '../store/actions/MessageActions'
-import { Input, Button } from 'react-rainbow-components'
+import { Input } from 'react-rainbow-components'
 import MessageCard from '../components/MessageCard'
 import arrow from '../assets/arrow.png'
 
@@ -80,14 +79,14 @@ const Messages = (props) => {
     <div className="thread-card" key={i} onClick={() => onThreadClick(thread)}>
       {thread.mentor.id === props.mentorState.user.id ? (
         <div className="message-recipient-name">
-          <img className="message-photo" src={thread.mentee.photo} />
+          <img className="message-photo" src={thread.mentee.photo} alt="" />
           <h4>
             {thread.mentee.firstName} {thread.mentee.lastName}
           </h4>
         </div>
       ) : (
         <div className="message-recipient-name">
-          <img className="message-photo" src={thread.mentor.photo} />
+          <img className="message-photo" src={thread.mentor.photo} alt="" />
           <h4>
             {thread.mentor.firstName} {thread.mentor.lastName}
           </h4>
@@ -112,7 +111,7 @@ const Messages = (props) => {
       ) : (
         <div className="user-messages">
           <div className="message-header" onClick={onBackClick}>
-            <img src={arrow} />
+            <img src={arrow} alt="back arrow" />
             <h4>{selectedName}</h4>
           </div>
           <div className="mapped-messages">{mappedMessages}</div>

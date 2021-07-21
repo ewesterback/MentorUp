@@ -23,7 +23,6 @@ export const UserRegister = async (input) => {
   }
 }
 export const LoadAllUsers = async () => {
-  console.log('service')
   try {
     const res = await axios.get(`${BASE_URL}/user/load`)
     return res.data

@@ -1,9 +1,6 @@
-import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { Input, Button } from 'react-rainbow-components'
+import { React } from 'react'
+import { Button } from 'react-rainbow-components'
 import Login from '../components/Login'
-//import Register from '../components/Register'
 
 const EntryPoint = (props) => {
   return (

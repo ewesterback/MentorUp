@@ -63,7 +63,6 @@ const FindThreadByUserId = async (req, res) => {
 }
 const FindThreadByUserIdMentorId = async (req, res) => {
   try {
-    console.log('made it to thread controller')
     let userId = parseInt(res.locals.payload.id)
     let mentorId = parseInt(req.params.mentor_id)
     const threads = await Thread.findAll({

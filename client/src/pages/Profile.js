@@ -1,5 +1,4 @@
-import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { React } from 'react'
 import { connect } from 'react-redux'
 import {
   RegisterUser,

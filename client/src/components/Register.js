@@ -1,5 +1,4 @@
-import { React, useEffect, useState } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { React, useState } from 'react'
 import { connect } from 'react-redux'
 import {
   RegisterUser,
@@ -57,13 +56,6 @@ const Register = (props) => {
 
     props.registerUser(regBody)
     props.history.push(`/`)
-  }
-
-  const getToken = () => {
-    let token = localStorage.getItem('token')
-    if (token) {
-      return props.setAuth(true)
-    }
   }
 
   const handleAvailToMentorChange = () => {

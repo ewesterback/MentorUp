@@ -55,7 +55,6 @@ const LoginReducer = (state = iState, action) => {
       }
     case USER_LOGIN:
       localStorage.setItem('token', action.payload.token)
-      console.log(action.payload)
       return {
         ...state,
         authenticated: true,
@@ -92,7 +91,6 @@ const LoginReducer = (state = iState, action) => {
     case SET_LOGIN_ERROR:
       return { ...state, loginError: action.payload }
     case SET_REG_ERROR:
-      console.log(action.payload)
       return { ...state, registrationError: action.payload }
     default:
       return { ...state }

@@ -73,7 +73,6 @@ const MessageReducer = (state = iState, action) => {
         editMessageContent: action.payload
       }
     case DELETE_MESSAGE:
-      console.log(action.payload)
       return {
         ...state,
         messages: state.messages.filter(

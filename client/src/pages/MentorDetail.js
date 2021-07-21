@@ -1,5 +1,4 @@
 import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import MessageCard from '../components/MessageCard'
 import { UnselectMentor } from '../store/actions/MentorActions'
@@ -12,7 +11,6 @@ import {
   CreateNewMessageGivenThread
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
-import MentorCard from '../components/MentorCard'
 
 const mapStateToProps = ({ mentorState, messageState }) => {
   return { mentorState, messageState }

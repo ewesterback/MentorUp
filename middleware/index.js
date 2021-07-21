@@ -25,7 +25,6 @@ const verifyToken = (req, res, next) => {
   const { token } = res.locals
   try {
     let payload = jwt.verify(token, APP_SECRET)
-    console.log(payload)
     if (payload) {
       res.locals.payload = payload
       return next()

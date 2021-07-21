@@ -68,7 +68,6 @@ export const CheckEmail = (email) => {
   return async (dispatch) => {
     try {
       const val = await FindEmail(email)
-      console.log(val)
       let errorMessage = ''
       if (val.data.length > 0) {
         errorMessage = 'Email already in use'

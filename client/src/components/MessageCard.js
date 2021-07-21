@@ -1,12 +1,6 @@
-import { React, useEffect } from 'react'
-//import { Route, Switch, useHistory } from 'react-router-dom'
+import { React } from 'react'
 import { connect } from 'react-redux'
-// import // UnselectMentor,
-// // LoadUserFromToken
-// '../store/actions/MentorActions'
 import {
-  StageMessage,
-  CreateNewMessageGivenThread,
   DeleteMessageGivenId,
   StageEditMessage,
   ToggleEditMessage,
@@ -61,7 +55,7 @@ const MessageCard = (props) => {
           : 'recipient-message'
       }
     >
-      {props.messageState.editMessage == props.message.id ? (
+      {props.messageState.editMessage === props.message.id ? (
         <div>
           <Input
             onChange={handleInput}

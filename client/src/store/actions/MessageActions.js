@@ -32,12 +32,9 @@ export const FindThreadByMentor = (id) => {
   return async (dispatch) => {
     try {
       const thread = await LoadMessagesForMentor(id)
-      console.log('yoooooooooooooo')
       if (thread) {
-        console.log(`ready to call messages for ${thread.id}`)
         let threadId = thread.id
         const messages = await LoadMessagesForThread(threadId)
-        console.log('post')
         dispatch({
           type: LOAD_MESSAGE_FOR_MENTOR,
           payload: { thread: thread.id, messages: messages }
@@ -49,7 +46,7 @@ export const FindThreadByMentor = (id) => {
         })
       }
     } catch (error) {
-      return alert('No messages right now')
+      return 'No messages right now'
     }
   }
 }
@@ -58,8 +55,6 @@ export const FindThreadsByUser = () => {
   return async (dispatch) => {
     try {
       const threads = await LoadThreadsForUser()
-      console.log('threads for users')
-      console.log(threads)
       dispatch({
         type: LOAD_THREADS_FOR_USER,
         payload: threads
@@ -70,13 +65,12 @@ export const FindThreadsByUser = () => {
   }
 }
 export const FindMessagesByThread = (id) => {
-  console.log(`the thread id is ${id}`)
   return async (dispatch) => {
     try {
       const messages = await LoadMessagesForThread(id)
       dispatch({ type: LOAD_MESSAGE_FOR_THREAD, payload: messages })
     } catch (error) {
-      return alert('error 1')
+      return 'error 1'
     }
   }
 }
@@ -94,7 +88,6 @@ export const CreateNewMessageGivenThread = (threadId, content) => {
   return async (dispatch) => {
     try {
       const message = await CreateNewMessage(threadId, content)
-      console.log(message)
       dispatch({ type: CREATE_NEW_MESSAGE_ON_THREAD, payload: message })
     } catch (error) {
       return alert('error 3')
@@ -105,7 +98,6 @@ export const DeleteMessageGivenId = (messageId) => {
   return async (dispatch) => {
     try {
       const res = await DeleteMessage(messageId)
-      //console.log(res)
       dispatch({ type: DELETE_MESSAGE, payload: messageId })
     } catch (error) {
       return alert('Uh oh')
@@ -140,7 +132,6 @@ export const EditGivenMessage = (body) => {
   return async (dispatch) => {
     try {
       const res = await EditMessage(body)
-      //console.log(res)
       let message = res.data[1][0]
       dispatch({ type: EDIT_MESSAGE, payload: message })
     } catch (error) {

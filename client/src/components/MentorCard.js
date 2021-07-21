@@ -1,8 +1,7 @@
-import { React, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { React } from 'react'
+
 import { connect } from 'react-redux'
 import { LoadMentors, SelectMentor } from '../store/actions/MentorActions'
-import { Input, Button } from 'react-rainbow-components'
 
 const mapStateToProps = ({ mentorState }) => {
   return { mentorState }
@@ -12,7 +11,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadMentors: () => dispatch(LoadMentors()),
     setSelectedMentor: (mentor) => dispatch(SelectMentor(mentor))
-    // handleLoginInput: (input) => dispatch(StageLogin(input))
   }
 }
 
@@ -25,7 +23,7 @@ const MentorCard = (props) => {
   return (
     <div className="mentor-card">
       <div className="top-bar"></div>
-      <img className="mentor-card-image" src={props.mentor.photo} />
+      <img className="mentor-card-image" src={props.mentor.photo} alt="" />
       <div className="content">
         <h3>
           {props.mentor.firstName} {props.mentor.lastName}
