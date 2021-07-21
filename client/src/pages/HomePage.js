@@ -5,6 +5,7 @@ import { SetAuth } from '../store/actions/LoginActions'
 import { Input, Button } from 'react-rainbow-components'
 import EntryPoint from './EntryPoint'
 import Profile from './Profile'
+import Mentors from './Mentors'
 
 const mapStateToProps = ({ loginState }) => {
   return { loginState }
@@ -21,7 +22,7 @@ const HomePage = (props) => {
   return (
     <div className="home-page">
       {props.loginState.authenticated ? (
-        <Profile {...props} />
+        <Mentors {...props} />
       ) : (
         <EntryPoint {...props} />
       )}

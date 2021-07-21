@@ -63,8 +63,13 @@ font-family: 'Staatliches', cursive;
   flex-direction: column;
   justify-content: center;
 }
-.entry-point h1 {
+.entry-point h1,
+h2 {
   font-family: 'Staatliches', sans-serif;
+  margin: 0;
+}
+.entry-point p {
+  margin: 0.25;
 }
 .login-input {
   margin: 1rem;
@@ -133,6 +138,7 @@ font-family: 'Staatliches', cursive;
   padding: 0.5rem;
 }
 .mapped-messages {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -272,6 +278,11 @@ font-family: 'Staatliches', cursive;
   justify-content: center;
   align-items: flex-start;
   margin: 0 2rem 0 2rem;
+}
+.mentor-right p,
+a,
+h2 {
+  margin: 0.25rem;
 }
 .messaging-pane {
   width: 100vw;

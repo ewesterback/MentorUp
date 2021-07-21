@@ -41,7 +41,9 @@ const Nav = (props) => {
             Logout
           </p>
         </div>
-      ) : null}
+      ) : (
+        <p className="nav-link">MentorUp</p>
+      )}
     </div>
   )
 }

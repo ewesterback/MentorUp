@@ -9,17 +9,15 @@
 
 
 ### *Description*
-Professional network that enables connections between those looking to mentor and those looking for a mentor.  This app is specifically targeted for underrepresented minorities within the STEM field.  Mentors can create a profile and indicate that they are available for mentees.  Mentees can create a profile and search for mentors drilling down by location and field.  Mentees can then choose to message the mentor to create a connection, and mentors and mentees can message each other on the platform.  
+Professional network that enables connections between those looking to mentor and those looking for a mentor.  This app is specifically targeted for underrepresented minorities within the Software Engineering field.  Mentors can create a profile and indicate that they are available for mentees.  Mentees can create a profile and search for mentors drilling down by location and field.  Mentees can then choose to message the mentor to create a connection, and mentors and mentees can message each other on the platform.  
 
-Also, both users can create job postings, search for job postings, and save job postings.  On their profile page, users can see all of their messages and saved jobs
 ***
 
 ### *Technologies Used*
 * PostgreSQL
 * Express
 * React Redux
-* NodeJs ?
-  
+* NodeJs 
 ***
 
 ### *Getting Started*
@@ -29,18 +27,19 @@ Also, both users can create job postings, search for job postings, and save job 
 ***
 
 ### *Screenshots*
-##### Recipe Search for Asian Cuisine
-![Recipe search](https://imgur.com/GFb7mHO.jpg)
+##### Login
+![Login](https://imgur.com/dkKVfOj.jpg)
 ##### Browse all recipes
-![Recipe Details](https://imgur.com/KdMnb2y.jpg)
-##### Sreenshot #3
-![Recipe input form](https://imgur.com/KeacmBy.jpg)
+![Mentor Search](https://imgur.com/35JKolQ.jpg)
+##### Message mentors
+![Recipe input form](https://imgur.com/xCTWBHw.jpg)
 
 
 ***
 
 ### *Future Updates*
 - [x] ~~Crossed out~~
+- [] Edit profile
 - [] Implement a read tracker - i.e. blue dot for unread messages
 - [] Create tip/blog post page
 - [] Create communities
@@ -51,8 +50,8 @@ Also, both users can create job postings, search for job postings, and save job 
 ### *Credits*
 ##### Tools utilized: 
 * CSS Grid Layout: [Layoutit!](https://grid.layoutit.com/)
-* Color picker: [Google](https://www.google.com/search?q=color+picker)
-* Semantics UI: [Semantic UI React](https://react.semantic-ui.com/)
+* Background and logo designer: [Canva](https://www.canva.com/)
+* React Rainbow: [react-rainbow-components](https://react-rainbow.io/)
 
 
 ##### References:

@@ -111,7 +111,6 @@ const Messages = (props) => {
   ))
   return (
     <div className="message-page">
-      <div className="spacer"></div>
       {!messageClicked ? (
         <div className="user-threads">{mappedThreads}</div>
       ) : (

@@ -9,14 +9,9 @@ const EntryPoint = (props) => {
   return (
     <div className="entry-point">
       <div className="entry-left">
-        <h1>Feel like an imposter?</h1>
-        <p>
-          Imposter syndrome is common amongst software engineers, and is
-          especially prevelant among minorities. It can be extremely difficult
-          to see what success looks like for <b>you</b> when there is a
-          significant lack of peers that look like you and have experienced
-          similar challenges as you.
-        </p>
+        <h2>Feel like an imposter?</h2>
+
+        <h1>MentorUp!</h1>
         <Login />
         <hr />
         <div>
@@ -26,6 +21,14 @@ const EntryPoint = (props) => {
             onClick={() => props.history.push('/register')}
           />
         </div>
+        <p>
+          Imposter syndrome is common amongst software engineers, and is
+          especially prevelant among minorities. It can be extremely difficult
+          to see what success looks like for <b>you</b> when there is a
+          significant lack of peers that look like you and have experienced
+          similar challenges as you.
+        </p>
+        <p>Use MentorUp to create your network of relateble mentors</p>
       </div>
     </div>
   )
