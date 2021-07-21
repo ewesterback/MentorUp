@@ -5,8 +5,7 @@ const {
   STAGE_LOGIN,
   SET_LOGIN_ERROR,
   SET_REG_ERROR,
-  LOAD_USER,
-  CHECK_REG_EMAIL
+  LOAD_USER
 } = require('../types')
 
 const iState = {
@@ -59,7 +58,6 @@ const LoginReducer = (state = iState, action) => {
       console.log(action.payload)
       return {
         ...state,
-        //user: action.payload,
         authenticated: true,
         registrationError: '',
         loginError: '',

@@ -25,7 +25,6 @@ const iState = {
 const MessageReducer = (state = iState, action) => {
   switch (action.type) {
     case LOAD_MESSAGE_FOR_MENTOR:
-      console.log('reducer')
       return {
         ...state,
         selectedThread: action.payload.thread,
@@ -58,7 +57,6 @@ const MessageReducer = (state = iState, action) => {
         selectedThread: action.payload
       }
     case UNSELECT_THREAD:
-      console.log('made it to unselect')
       return {
         ...state,
         messages: [],

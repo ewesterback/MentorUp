@@ -38,9 +38,6 @@ const MentorReducer = (state = iState, action) => {
         ...state,
         user: action.payload
       }
-    case CHANGE_FILTER:
-      //need to change
-      return { ...state }
     default:
       return { ...state }
   }
