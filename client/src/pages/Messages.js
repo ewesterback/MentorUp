@@ -79,19 +79,29 @@ const Messages = (props) => {
     props.handleMessage('')
   }
   const mappedThreads = props.messageState.messageThreads.map((thread, i) => (
-    <div key={i} onClick={() => onThreadClick(thread)}>
+    <div className="thread-card" key={i} onClick={() => onThreadClick(thread)}>
       {thread.mentor.id === props.mentorState.user.id ? (
         <div className="message-recipient-name">
           <img className="message-photo" src={thread.mentee.photo} />
-          <h4>{thread.mentee.firstName}</h4>
+          <h4>
+            {thread.mentee.firstName} {thread.mentee.lastName}
+          </h4>
         </div>
       ) : (
         <div className="message-recipient-name">
           <img className="message-photo" src={thread.mentor.photo} />
-          <h4>{thread.mentor.firstName}</h4>
+          <h4>
+            {thread.mentor.firstName} {thread.mentor.lastName}
+          </h4>
         </div>
       )}
-      <p>{thread.message.content}</p>
+      {thread.message.userId === props.mentorState.user.id ? (
+        <p>You: {thread.message.content}</p>
+      ) : (
+        <p>
+          {thread.message.User.firstName}: {thread.message.content}
+        </p>
+      )}
     </div>
   ))
   console.log(props.messageState.messages)
@@ -101,6 +111,7 @@ const Messages = (props) => {
   ))
   return (
     <div className="message-page">
+      <div className="spacer"></div>
       {!messageClicked ? (
         <div className="user-threads">{mappedThreads}</div>
       ) : (

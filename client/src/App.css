@@ -56,6 +56,20 @@
   font-size: 2rem;
   margin: 0.5rem;
 }
+.spacer {
+  height: 1.1rem;
+}
+.thread-card {
+  margin: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.thread-card p {
+  border-top: 1px solid #415164;
+  margin: 0;
+  padding: 0.5rem;
+}
 .mapped-messages {
   display: flex;
   flex-direction: column;
