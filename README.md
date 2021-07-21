@@ -1,4 +1,4 @@
-# Project 4 - mentor connection
+# Project 4 - MentorUp
 
 ## Date: 07/21/2021
 
@@ -38,7 +38,6 @@ Professional network that enables connections between those looking to mentor an
 ***
 
 ### *Future Updates*
-- [x] ~~Crossed out~~
 - [] Edit profile
 - [] Implement a read tracker - i.e. blue dot for unread messages
 - [] Create tip/blog post page

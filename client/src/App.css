@@ -27,7 +27,6 @@ font-family: 'Staatliches', cursive;
 }
 .nav-links {
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -39,8 +38,6 @@ font-family: 'Staatliches', cursive;
   font-family: 'Staatliches', sans-serif;
   font-size: 2rem;
   margin: 0.25em;
-  /* margin-left: 1rem;
-  margin-right: 1rem; */
 }
 /* Entry Point */
 .entry-point {
@@ -326,5 +323,19 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+  }
+  .nav-bar {
+    min-height: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-bottom: 2px solid #9ed0c9;
+  }
+  .nav-link {
+    text-decoration: none;
+    color: white;
+    font-family: 'Staatliches', sans-serif;
+    font-size: 1rem;
+    margin: 0.25em;
   }
 }
