@@ -27,13 +27,13 @@ const MentorCard = (props) => {
       <div className="top-bar"></div>
       <img className="mentor-card-image" src={props.mentor.photo} />
       <div className="content">
-        <p>
+        <h3>
           {props.mentor.firstName} {props.mentor.lastName}
-        </p>
+        </h3>
         <p>
           {props.mentor.currentCompany} | {props.mentor.currentTitle}
         </p>
-        <button onClick={() => onClick(props.mentor)}>Connect</button>
+        <button onClick={() => onClick(props.mentor)}>Learn More</button>
       </div>
     </div>
   )

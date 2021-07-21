@@ -1,5 +1,6 @@
 const { User } = require('../models')
 const middleware = require('../middleware')
+const { Op } = require('sequelize')
 
 const Login = async (req, res) => {
   try {
@@ -72,8 +73,11 @@ const Register = async (req, res) => {
 
 const FindAllUsers = async (req, res) => {
   try {
+    const userId = parseInt(res.locals.payload.id)
     let users = await User.findAll({
-      where: { availableToMentor: true }
+      where: {
+        [Op.and]: [{ availableToMentor: true }, { id: { [Op.ne]: userId } }]
+      }
     })
     res.send(users)
   } catch (error) {
@@ -83,7 +87,6 @@ const FindAllUsers = async (req, res) => {
 
 const FindUserFromToken = async (req, res) => {
   try {
-    //const userId = 1
     const userId = parseInt(res.locals.payload.id)
     let user = await User.findAll({
       where: { id: userId },

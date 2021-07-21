@@ -19,7 +19,6 @@ const iState = {
 const MentorReducer = (state = iState, action) => {
   switch (action.type) {
     case LOAD_MENTORS:
-      console.log('reducer')
       return {
         ...state,
         mentors: action.payload

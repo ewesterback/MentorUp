@@ -20,8 +20,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const Mentors = (props) => {
   useEffect(() => {
-    props.loadMentors()
     props.setUser()
+    props.loadMentors()
   }, [])
   const mappedMentors = props.mentorState.mentors.map((mentor, i) => (
     <MentorCard mentor={mentor} key={i} {...props} />

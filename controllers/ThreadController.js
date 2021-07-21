@@ -4,22 +4,11 @@ const { Op } = require('sequelize')
 const CreateThread = async (req, res) => {
   try {
     let mentorID = parseInt(req.params.mentor_id)
-    console.log('--------------------')
-    console.log(mentorID)
-    console.log(res.locals.payload.id)
-    console.log('----------------------')
     let threadBody = {
       mentorId: mentorID,
       menteeId: res.locals.payload.id
     }
     const thread = await Thread.create(threadBody)
-    // const user = await User.findAll({
-    //   where: { id: threadBody.menteeId }
-    // })
-    // let newThread = {
-    //   ...thread.dataValues,
-    //   User: { firstName: user[0].firstName, lastName: user[0].lastName }
-    // }
     res.send(thread)
   } catch (error) {
     throw error
