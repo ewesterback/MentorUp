@@ -22,7 +22,7 @@ Professional network that enables connections between those looking to mentor an
 
 ### *Getting Started*
 * To get started, create a mentor or mentee
-* A Trello board as used to track application and can be viewed [here](https://trello.com/b/j77523pS/project2).
+* A Trello board as used to track application and can be viewed [here](https://trello.com/b/KQOmzy03/project4).
 * The project has been deployed and can be viewed [here](link).
 ***
 
