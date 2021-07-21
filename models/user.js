@@ -44,18 +44,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      // isMentor: {
-      //   type: DataTypes.BOOLEAN,
-      //   allowNull: false
-      // },
       availableToMentor: {
         type: DataTypes.BOOLEAN,
         allowNull: true
       },
-      // field: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false
-      // },
       state: {
         type: DataTypes.STRING,
         allowNull: false
