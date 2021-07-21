@@ -61,7 +61,6 @@ const Register = async (req, res) => {
     const user = await User.create(userBody)
     res.send(user)
   } catch (error) {
-    console.log(error.message)
     if (error.message === 'Validation error') {
       return res
         .status(400)
