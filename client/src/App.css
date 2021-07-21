@@ -27,6 +27,10 @@
   max-width: 3em;
   max-height: 3em;
 }
+.message-header img {
+  width: 3rem;
+  height: 3rem;
+}
 .message-recipient-name {
   display: flex;
   flex-direction: row;

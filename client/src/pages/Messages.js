@@ -17,6 +17,7 @@ import {
 } from '../store/actions/MessageActions'
 import { Input, Button } from 'react-rainbow-components'
 import MessageCard from '../components/MessageCard'
+import arrow from '../assets/arrow.png'
 
 const mapStateToProps = ({ mentorState, messageState }) => {
   return { mentorState, messageState }
@@ -41,15 +42,20 @@ const mapDispatchToProps = (dispatch) => {
 
 const Messages = (props) => {
   const [messageClicked, setMessageClicked] = useState(false)
+  const [selectedName, setSelectedName] = useState('')
   useEffect(() => {
     props.loadThreadsForUser()
     props.setUser()
   }, [])
-  const onThreadClick = (threadId) => {
+  const onThreadClick = (thread) => {
+    let threadId = thread.id
     props.selectThread(threadId)
     props.loadMessages(threadId)
+    setMessageClicked(true)
   }
-
+  const onBackClick = () => {
+    setMessageClicked(false)
+  }
   const handleInput = (e) => {
     props.handleMessage(e.target.value)
   }
@@ -65,7 +71,7 @@ const Messages = (props) => {
     props.handleMessage('')
   }
   const mappedThreads = props.messageState.messageThreads.map((thread, i) => (
-    <div key={i} onClick={() => onThreadClick(thread.id)}>
+    <div key={i} onClick={() => onThreadClick(thread)}>
       {thread.mentor.id === props.mentorState.user.id ? (
         <div className="message-recipient-name">
           <img className="message-photo" src={thread.mentee.photo} />
@@ -90,9 +96,12 @@ const Messages = (props) => {
   return (
     <div className="message-page">
       {!messageClicked ? (
-        <div className="side-threads">{mappedThreads}</div>
+        <div className="user-threads">{mappedThreads}</div>
       ) : (
-        <div className="side-messages">
+        <div className="user-messages">
+          <div className="message-header">
+            <img src={arrow} />
+          </div>
           {mappedMessages}
           <Input
             placeholder="message"
