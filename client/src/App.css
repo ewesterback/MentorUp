@@ -62,6 +62,17 @@ font-family: 'Staatliches', cursive;
 .register-input {
   margin: 1rem;
 }
+.register-button {
+  background-color: white;
+  color: #1e6b62;
+  font-size: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid #1e6b62;
+  margin-bottom: 0.5rem;
+}
+.register-button:hover {
+  background-color: #e2fffb;
+}
 
 /* Messages*/
 .message-page {

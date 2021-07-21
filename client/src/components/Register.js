@@ -211,7 +211,17 @@ const Register = (props) => {
             value={props.loginState.formInput.passions}
             onChange={handleInputChange}
           />
-          <button onClick={handleRegister} className="register-input">
+          <button
+            onClick={handleRegister}
+            className="register-input register-button"
+            disabled={
+              !props.loginState.formInput.firstName ||
+              !props.loginState.formInput.lastName ||
+              !props.loginState.formInput.password ||
+              !props.loginState.formInput.state ||
+              !props.loginState.formInput.linkedin
+            }
+          >
             Register
           </button>
         </div>
